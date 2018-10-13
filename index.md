@@ -1,7 +1,7 @@
 ---
 layout: workshop      # DON'T CHANGE THIS.
 carpentry: "swc"    # what kind of Carpentry (must be either "lc" or "dc" or "swc")
-venue: "University of Amsterdam"        # brief name of host site without address (e.g., "Euphoric State University")
+venue: "Software Carpentry workshop - Python Programming - University of Amsterdam"        # brief name of host site without address (e.g., "Euphoric State University")
 address: "Room: ?, Roetersstraat, 1012 WX Amsterdam, The Netherlands"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
 country: "nl"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1)
 language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/ISO_639-1)
@@ -197,8 +197,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 
 {% comment %}
-  SCHEDULE
-
+  ######### SCHEDULE ###############
   Show the workshop's schedule.  Edit the items and times in the table
   to match your plans.  You may also want to change 'Day 1' and 'Day
   2' to be actual dates or days of the week.
@@ -206,7 +205,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 <h2 id="schedule">Schedule</h2>
 
 {% if page.carpentry == "swc" %}
-  {% include sc/schedule.html %}
+  {% include python/schedule.html %}
 {% elsif page.carpentry == "dc" %}
   {% include dc/schedule.html %}
 {% elsif page.carpentry == "lc" %}
