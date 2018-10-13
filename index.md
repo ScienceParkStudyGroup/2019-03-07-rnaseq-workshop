@@ -2,12 +2,12 @@
 layout: workshop      # DON'T CHANGE THIS.
 carpentry: "swc"    # what kind of Carpentry (must be either "lc" or "dc" or "swc")
 venue: "Software Carpentry workshop - Python Programming - University of Amsterdam"        # brief name of host site without address (e.g., "Euphoric State University")
-address: "Room: ?, Roetersstraat, 1012 WX Amsterdam, The Netherlands"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
+address: "Plantage Muidergracht 12, 1018 TV Amsterdam, Roetersstraat, 1012 WX Amsterdam, The Netherlands"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
 country: "nl"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1)
 language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/ISO_639-1)
 latlng: "52.36349, 4.91191"       # decimal latitude and longitude of workshop venue (e.g., "41.7901128,-87.6007318" - use https://www.latlong.net/)
-humandate: "Nov 20-21, 2018"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
-humantime: "9:30 - 17:00"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
+humandate: "Nov 19-20, 2018"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
+humantime: "9:00 - 17:00"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
 startdate: 2018-10-24      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
 enddate: 2018-10-25        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
 instructor: ["Like Fokkens", "Marc Galland"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
@@ -56,10 +56,8 @@ and our administrator may contact you if we need any extra information.</h4>
 <h2 id="general">General Information</h2>
 
 {% comment %}
-  INTRODUCTION
-
-  Edit the general explanatory paragraph below if you want to change
-  the pitch.
+  ####### INTRODUCTION #########
+  Edit the general explanatory paragraph below if you want to change the pitch.
 {% endcomment %}
 {% if page.carpentry == "swc" %}
   {% include sc/intro.html %}
@@ -93,12 +91,11 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 {% if page.latlng %}
 <p id="where">
-  <strong>Where:</strong>
-  {{page.address}}.
-  Get directions with
-  <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a>
-  or
-  <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>.
+	<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>.). We will use two different rooms:  
+	<ul>
+		<li>Monday: <a href="https://rooster.uva.nl/locationinfo/432002?mg=2018">Room M0.02</a></li>
+		<li>Tuesday: <a href="https://rooster.uva.nl/locationinfo/310AA210?mg=2018">Room A2.10</a></li>
+	</ul>
 </p>
 {% endif %}
 
