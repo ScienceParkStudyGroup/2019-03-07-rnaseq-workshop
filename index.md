@@ -119,7 +119,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   <a href="{{site.swc_site}}/conduct.html">Code of Conduct</a>.
 </p>
 
-<p><strong>Registration:</strong> Please get your ticket using the Eventbrite widget (see above).</p>
+<p><strong>Registration:</strong> Staff from the University of Amsterdam get a reduced fee to cover the catering costs. Please get your ticket using the Eventbrite widget (see above).</p>
 
 <p><strong>Organisers:</strong> This workshop is organized by the <a href="https://www.scienceparkstudygroup.info/">Science Park Study Group</a> members as part of its recurring activities. Please visit our website for other events that take place in Amsterdam (usually Science Park). If there are any questions get in touch and send us an email (see <a href="#contact">contact</a>) </p> 
 
@@ -199,7 +199,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   to match your plans.  You may also want to change 'Day 1' and 'Day
   2' to be actual dates or days of the week.
 {% endcomment %}
-<h2 id="schedule">Schedule</h2>
+<h2 class="schedule-title">Preliminary schedule</h2>
 
 {% if page.carpentry == "swc" %}
   {% include python/schedule.html %}
