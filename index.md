@@ -1,7 +1,7 @@
 ---
 layout: workshop      # DON'T CHANGE THIS.
 carpentry: "swc"    # what kind of Carpentry (must be either "lc" or "dc" or "swc")
-venue: "Software Carpentry workshop - Shell/Git/Python - University of Amsterdam"        # brief name of host site without address (e.g., "Euphoric State University")
+venue: "Computational skills for Life Scientists - Amsterdam"        # brief name of host site without address (e.g., "Euphoric State University")
 address: "Plantage Muidergracht 12, 1018 TV Amsterdam, Roetersstraat, 1012 WX Amsterdam, The Netherlands"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
 country: "nl"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1)
 language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/ISO_639-1)
@@ -197,7 +197,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 <h2 class="schedule-title">Preliminary schedule</h2>
 
 {% if page.carpentry == "swc" %}
-  {% include python/schedule.html %}
+  {% include  python/schedule.html %}
 {% elsif page.carpentry == "dc" %}
   {% include dc/schedule.html %}
 {% elsif page.carpentry == "lc" %}
