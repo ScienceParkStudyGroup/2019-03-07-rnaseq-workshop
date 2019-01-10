@@ -46,7 +46,7 @@ eventbrite: 51358690225          # optional: alphanumeric key for Eventbrite reg
 
 {% comment %}
 <h4>This is the workshop template. Delete these lines and use it to customize your own website.
-If you are running a self-organized workshop or have not put in a workshop request yet, please also fill in 
+If you are running a self-organized workshop or have not put in a workshop request yet, please also fill in
 <a href="{{site.amy_site}}/submit">this workshop request form</a> to let us know about your workshop
 and our administrator may contact you if we need any extra information.</h4>
 {% endcomment %}
@@ -89,7 +89,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 {% if page.latlng %}
 <p id="where">
-	<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>.). We will use two different rooms:  
+	<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>.). We will use two different rooms:
 	<ul>
 		<li>Monday: <a href="https://rooster.uva.nl/locationinfo/331E003?mg=2018">Room E0.03</a></li>
 		<li>Tuesday: <a href="https://rooster.uva.nl/locationinfo/432002?mg=2018">Room M0.02</a></li>
@@ -119,7 +119,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 <p><strong>Registration:</strong> Staff from the University of Amsterdam get a reduced fee to cover the catering costs. Please get your ticket using the Eventbrite widget (see above).</p>
 
-<p><strong>Organisers:</strong> This workshop is organized by the <a href="https://www.scienceparkstudygroup.info/">Science Park Study Group</a> members as part of its recurring activities. Please visit our website for other events that take place in Amsterdam (usually Science Park). If there are any questions get in touch and send us an email (see <a href="#contact">contact</a>) </p> 
+<p><strong>Organisers:</strong> This workshop is organized by the <a href="https://www.scienceparkstudygroup.info/">Science Park Study Group</a> members as part of its recurring activities. Please visit our website for other events that take place in Amsterdam (usually Science Park). If there are any questions get in touch and send us an email (see <a href="#contact">contact</a>) </p>
 
 {% comment %}
 ##########  ACCESSIBILITY ###############
@@ -169,12 +169,12 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 <hr/>
 
-{% comment %} 
- SURVEYS - DO NOT EDIT SURVEY LINKS 
+{% comment %}
+ SURVEYS - DO NOT EDIT SURVEY LINKS
 {% endcomment %}
 <h2 id="surveys">Surveys</h2>
 <p>Please be sure to complete these surveys before and after the workshop.</p>
-{% if site.carpentry == "swc" %} 
+{% if site.carpentry == "swc" %}
 <p><a href="{{ site.swc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
 <p><a href="{{ site.swc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
 {% elsif site.carpentry == "dc" %}
@@ -245,12 +245,11 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 <hr/>
 
 {% comment %}
+############## SETUP #############
   SETUP
-
   Delete irrelevant sections from the setup instructions.  Each
   section is inside a 'div' without any classes to make the beginning
   and end easier to find.
-
   This is the other place where people frequently make mistakes, so
   please preview your site before committing, and make sure to run
   'tools/check' as well.
@@ -258,6 +257,15 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 <h2 id="setup">Setup</h2>
 
+<h3> Required Files </h3>
+  <ul>
+    <li>Shell lesson: please download the files <a href="http://swcarpentry.github.io/shell-novice/data/data-shell.zip"> here</a>. Unzip/extract the files to create a <em>data-shell</em> folder.</li>
+    <li>Python lesson: please download the files <a href="http://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip">here</a> and the related code <a href="http://swcarpentry.github.io/python-novice-inflammation/code/python-novice-inflammation-code.zip">here</a>. Create a folder called <em>swc-python</em> on your Desktop. Move the files there.</li>
+    <li>Git lesson: there are no files required for this lesson.</li>
+  </ul>
+
+
+<h3> Softwares</h3>
 <p>
   To participate in a
   {% if page.carpentry == "swc" %}
@@ -268,7 +276,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   Library Carpentry
   {% endif %}
   workshop,
-  you will need access to the software described below.
+  you will need access to the softwares described below.
   In addition, you will need an up-to-date web browser.
 </p>
 <p>
@@ -281,8 +289,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   <h3>The Bash Shell</h3>
 
   <p>
-    Bash is a commonly-used shell that gives you the power to do simple
-    tasks more quickly.
+    Bash is a commonly-used shell that gives you the power to do simple tasks more quickly.
   </p>
 
   <div class="row">
@@ -408,7 +415,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
         <a href="http://sourceforge.net/projects/git-osx-installer/files/">this list</a>.
         Because this installer is not signed by the developer, you may have to
         right click (control click) on the .pkg file, click Open, and click
-        Open on the pop up window. 
+        Open on the pop up window.
         After installing Git, there will not be anything in your <code>/Applications</code> folder,
         as Git is a command line program.
         <strong>For older versions of OS X (10.5-10.8)</strong> use the
@@ -487,12 +494,12 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   </div>
 </div> {% comment %} End of 'editor' section. {% endcomment %}
 
-<div id="python"> 
+<div id="python">
 
-{% comment %} 
-####### Start of 'Python' section.######### 
+{% comment %}
+####### Start of 'Python' section.#########
 Remove the third paragraph if the workshop will teach Python using something other than the Jupyter notebook.
-Details at https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatibility 
+Details at https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#browser-compatibility
 {% endcomment %}
 
   <h3>Python</h3>
@@ -582,6 +589,6 @@ Details at https://jupyter-notebook.readthedocs.io/en/stable/notebook.html#brows
   which has instructions on how to test that everything was installed correctly.
   </p>
 {% endcomment %}
-</div> 
+</div>
 
 {% comment %} End of 'Python' section. {% endcomment %}
