@@ -89,15 +89,11 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 {% if page.latlng %}
 <p id="where">
-<<<<<<< HEAD
-	<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>. We will use two different rooms:  
-=======
-	<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>.). We will use two different rooms:
->>>>>>> 076c09d778e8424615f378a6652aba1fdaed7241
-	<ul>
-		<li>Monday: <a href="https://rooster.uva.nl/locationinfo/331E003?mg=2018">Room E0.03</a></li>
-		<li>Tuesday: <a href="https://rooster.uva.nl/locationinfo/432002?mg=2018">Room M0.02</a></li>
-	</ul>
+<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>. We will use two different rooms:  
+<ul>
+	<li>Monday: <a href="https://rooster.uva.nl/locationinfo/331E003?mg=2018">Room E0.03</a></li>
+	<li>Tuesday: <a href="https://rooster.uva.nl/locationinfo/432002?mg=2018">Room M0.02</a></li>
+</ul>
 </p>
 {% endif %}
 
