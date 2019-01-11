@@ -175,8 +175,8 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 <h2 id="surveys">Surveys</h2>
 <p>Please be sure to complete these surveys before and after the workshop.</p>
 {% if site.carpentry == "swc" %}
-<p><a href="{{ site.swc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
-<p><a href="{{ site.swc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
+<p><a href="https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id=2019-01-14-2019-01-14-Amsterdam-Python-SWC">Pre-workshop Survey</a></p>
+<p><a href="https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id=2019-01-14-2019-01-14-Amsterdam-Python-SWC">Post-workshop Survey</a></p>
 {% elsif site.carpentry == "dc" %}
 <p><a href="{{ site.dc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
 <p><a href="{{ site.dc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
