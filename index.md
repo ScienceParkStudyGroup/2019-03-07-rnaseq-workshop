@@ -89,7 +89,11 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 {% if page.latlng %}
 <p id="where">
+<<<<<<< HEAD
 	<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>. We will use two different rooms:  
+=======
+	<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>.). We will use two different rooms:
+>>>>>>> 076c09d778e8424615f378a6652aba1fdaed7241
 	<ul>
 		<li>Monday: <a href="https://rooster.uva.nl/locationinfo/331E003?mg=2018">Room E0.03</a></li>
 		<li>Tuesday: <a href="https://rooster.uva.nl/locationinfo/432002?mg=2018">Room M0.02</a></li>
@@ -245,12 +249,11 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 <hr/>
 
 {% comment %}
+############## SETUP #############
   SETUP
-
   Delete irrelevant sections from the setup instructions.  Each
   section is inside a 'div' without any classes to make the beginning
   and end easier to find.
-
   This is the other place where people frequently make mistakes, so
   please preview your site before committing, and make sure to run
   'tools/check' as well.
@@ -258,6 +261,15 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 <h2 id="setup">Setup</h2>
 
+<h3> Required Files </h3>
+  <ul>
+    <li>Shell lesson: please download the files <a href="http://swcarpentry.github.io/shell-novice/data/data-shell.zip"> here</a>. Unzip/extract the files to create a <em>data-shell</em> folder.</li>
+    <li>Python lesson: please download the files <a href="http://swcarpentry.github.io/python-novice-inflammation/data/python-novice-inflammation-data.zip">here</a> and the related code <a href="http://swcarpentry.github.io/python-novice-inflammation/code/python-novice-inflammation-code.zip">here</a>. Create a folder called <em>swc-python</em> on your Desktop. Move the files there.</li>
+    <li>Git lesson: there are no files required for this lesson.</li>
+  </ul>
+
+
+<h3> Softwares</h3>
 <p>
   To participate in a
   {% if page.carpentry == "swc" %}
@@ -268,7 +280,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   Library Carpentry
   {% endif %}
   workshop,
-  you will need access to the software described below.
+  you will need access to the softwares described below.
   In addition, you will need an up-to-date web browser.
 </p>
 <p>
@@ -281,8 +293,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   <h3>The Bash Shell</h3>
 
   <p>
-    Bash is a commonly-used shell that gives you the power to do simple
-    tasks more quickly.
+    Bash is a commonly-used shell that gives you the power to do simple tasks more quickly.
   </p>
 
   <div class="row">
