@@ -11,7 +11,7 @@ humantime: "9:00 - 17:00"    # human-readable times for the workshop (e.g., "9:0
 startdate: 2019-01-14      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
 enddate: 2019-01-15        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
 instructor: ["Like Fokkens", "Marc Galland","Pietro Marchesi"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
-helper: ["Caspar Treijtel (M+T)", "Carlos Martinez (T)","Tijs Bliek (M+T)","Michelle Mantel (M+T)","Jihed Chouaref (T)","Fred White (M+T)"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+helper: ["Zsofia Koma (M)", Caspar Treijtel (M+T)", "Carlos Martinez (T)","Tijs Bliek (M+T)","Michelle Mantel (M+T)","Jihed Chouaref (T)","Fred White (M+T)"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
 email: ["m.galland@uva.nl","l.fokkens@uva.nl"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
 collaborative_notes: https://pad.carpentries.org/ams-python-2018     # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document
 eventbrite: 51358690225          # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
