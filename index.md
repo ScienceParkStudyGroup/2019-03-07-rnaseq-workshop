@@ -111,7 +111,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   <a href="{{site.swc_site}}/conduct.html">Code of Conduct</a>.
 </p>
 
-<p><strong>Registration:</strong>All free for staff from the University of Amsterdam. Master students and staff from the <a href="http://gls.uva.nl/">Green Life Sciences cluster</a> have 10 seats reserved while 10 other seats are reserved for other UvA students and staff. Please get your ticket using the Eventbrite widget (see above).</p>
+<p><strong>Registration:</strong> All free for staff from the University of Amsterdam. Master students and staff from the <a href="http://gls.uva.nl/">Green Life Sciences cluster</a> have 10 seats reserved while 10 other seats are reserved for other UvA students and staff. Please get your ticket using the Eventbrite widget (see above).</p>
 
 <p><strong>Organisers:</strong> This workshop is organized by the <a href="https://www.scienceparkstudygroup.info/">Science Park Study Group</a> members as part of its recurring activities. Please visit our website for other events that take place in Amsterdam (usually Science Park). If there are any questions get in touch and send us an email (see <a href="#contact">contact</a>) </p>
 
@@ -179,14 +179,6 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   {% include lc/schedule.html %}
 {% endif %}
 
-{% comment %}
-  ######## Etherpad ############### Collaborative Notes
-{% endcomment %}
-{% if page.collaborative_notes %}
-<p id="collaborative_notes">
-  We will use this <a href="{{page.collaborative_notes}}">collaborative document</a> for chatting, taking notes, and sharing URLs and bits of code.
-</p>
-{% endif %}
 
 <hr/>
 
