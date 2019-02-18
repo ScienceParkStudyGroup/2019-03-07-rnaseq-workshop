@@ -10,7 +10,7 @@ humandate: "March 7, 2019"    # human-readable dates for the workshop (e.g., "Fe
 humantime: "13:00 - 17:00"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
 startdate: 2019-03-07      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
 enddate: 2019-03-07        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
-instructor: ["Ernest Aliche", Tijs Bliek", "Marc Galland"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
+instructor: ["Ernest Aliche", "Tijs Bliek", "Marc Galland"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
 helper: ["Max van Hooren"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
 email: ["m.galland@uva.nl","bliek@uva.nl"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
 collaborative_notes:      # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document
@@ -111,7 +111,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   <a href="{{site.swc_site}}/conduct.html">Code of Conduct</a>.
 </p>
 
-<p><strong>Registration:</strong> Staff from the University of Amsterdam get a reduced fee to cover the catering costs. Please get your ticket using the Eventbrite widget (see above).</p>
+<p><strong>Registration:</strong>All free for staff from the University of Amsterdam. Master students and staff from the <a href="http://gls.uva.nl/">Green Life Sciences cluster</a> have 10 seats reserved while 10 other seats are reserved for other UvA students and staff. Please get your ticket using the Eventbrite widget (see above).</p>
 
 <p><strong>Organisers:</strong> This workshop is organized by the <a href="https://www.scienceparkstudygroup.info/">Science Park Study Group</a> members as part of its recurring activities. Please visit our website for other events that take place in Amsterdam (usually Science Park). If there are any questions get in touch and send us an email (see <a href="#contact">contact</a>) </p>
 
@@ -164,31 +164,12 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 <hr/>
 
 {% comment %}
- SURVEYS - DO NOT EDIT SURVEY LINKS
-{% endcomment %}
-<h2 id="surveys">Surveys</h2>
-<p>Please be sure to complete these surveys before and after the workshop.</p>
-{% if site.carpentry == "swc" %}
-<p><a href="https://www.surveymonkey.com/r/swc_pre_workshop_v1?workshop_id=2019-01-14-2019-01-14-Amsterdam-Python-SWC">Pre-workshop Survey</a></p>
-<p><a href="https://www.surveymonkey.com/r/swc_post_workshop_v1?workshop_id=2019-01-14-2019-01-14-Amsterdam-Python-SWC">Post-workshop Survey</a></p>
-{% elsif site.carpentry == "dc" %}
-<p><a href="{{ site.dc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
-<p><a href="{{ site.dc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
-{% elsif site.carpentry == "lc" %}
-<p><a href="{{ site.lc_pre_survey }}{{ site.github.project_title }}">Pre-workshop Survey</a></p>
-<p><a href="{{ site.lc_post_survey }}{{ site.github.project_title }}">Post-workshop Survey</a></p>
-{% endif %}
-
-<hr/>
-
-
-{% comment %}
   ######### SCHEDULE ###############
   Show the workshop's schedule.  Edit the items and times in the table
   to match your plans.  You may also want to change 'Day 1' and 'Day
   2' to be actual dates or days of the week.
 {% endcomment %}
-<h2 class="schedule-title">Preliminary schedule</h2>
+<h2 class="schedule-title">Afternoon schedule</h2>
 
 {% if page.carpentry == "swc" %}
   {% include  python/schedule.html %}
