@@ -1,20 +1,20 @@
 ---
 layout: workshop      # DON'T CHANGE THIS.
-carpentry: "swc"    # what kind of Carpentry (must be either "lc" or "dc" or "swc")
-venue: "Computational skills for Life Scientists - Amsterdam"        # brief name of host site without address (e.g., "Euphoric State University")
-address: "Plantage Muidergracht 12, 1018 TV Amsterdam, Roetersstraat, 1012 WX Amsterdam, The Netherlands"      # full street address of workshop (e.g., "Room A, 123 Forth Street, Blimingen, Euphoria")
+carpentry: "dc"    # what kind of Carpentry (must be either "lc" or "dc" or "swc")
+venue: "RNA-Seq workshop - University of Amsterdam"        # brief name of host site without address (e.g., "Euphoric State University")
+address: "Room G3.10, Science Park 904, 1098XH Amsterdam, The Netherlands"      
 country: "nl"      # lowercase two-letter ISO country code such as "fr" (see https://en.wikipedia.org/wiki/ISO_3166-1)
 language: "en"     # lowercase two-letter ISO language code such as "fr" (see https://en.wikipedia.org/wiki/ISO_639-1)
-latlng: "52.36349, 4.91191"       # decimal latitude and longitude of workshop venue (e.g., "41.7901128,-87.6007318" - use https://www.latlong.net/)
-humandate: "Jan 14-15, 2019"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
-humantime: "9:00 - 17:00"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
-startdate: 2019-01-14      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
-enddate: 2019-01-15        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
-instructor: ["Like Fokkens", "Marc Galland","Pietro Marchesi"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
-helper: ["Zsofia Koma (M)", "Caspar Treijtel (M+T)", "Carlos Martinez (T)","Tijs Bliek (M+T)","Michelle Mantel (M+T)","Jihed Chouaref (T)","Fred White (M+T)"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
-email: ["m.galland@uva.nl","l.fokkens@uva.nl"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
-collaborative_notes: https://pad.carpentries.org/ams-python-2018     # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document
-eventbrite: 51358690225          # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
+latlng: "52.355354, 4.956575"       # decimal latitude and longitude of workshop venue (e.g., "41.7901128,-87.6007318" - use https://www.latlong.net/)
+humandate: "March 7, 2019"    # human-readable dates for the workshop (e.g., "Feb 17-18, 2020")
+humantime: "13:00 - 17:00"    # human-readable times for the workshop (e.g., "9:00 am - 4:30 pm")
+startdate: 2019-03-07      # machine-readable start date for the workshop in YYYY-MM-DD format like 2015-01-01
+enddate: 2019-03-07        # machine-readable end date for the workshop in YYYY-MM-DD format like 2015-01-02
+instructor: ["Ernest Aliche", Tijs Bliek", "Marc Galland"] # boxed, comma-separated list of instructors' names as strings, like ["Kay McNulty", "Betty Jennings", "Betty Snyder"]
+helper: ["Max van Hooren"]     # boxed, comma-separated list of helpers' names, like ["Marlyn Wescoff", "Fran Bilas", "Ruth Lichterman"]
+email: ["m.galland@uva.nl","bliek@uva.nl"]    # boxed, comma-separated list of contact email addresses for the host, lead instructor, or whoever else is handling questions, like ["marlyn.wescoff@example.org", "fran.bilas@example.org", "ruth.lichterman@example.org"]
+collaborative_notes:      # optional: URL for the workshop collaborative notes, e.g. an Etherpad or Google Docs document
+eventbrite: 56550248315          # optional: alphanumeric key for Eventbrite registration, e.g., "1234567890AB" (if Eventbrite is being used)
 ---
 
 {% comment %} See instructions in the comments below for how to edit specific sections of this workshop template. {% endcomment %}
@@ -54,7 +54,7 @@ and our administrator may contact you if we need any extra information.</h4>
 <h2 id="general">General Information</h2>
 
 {% comment %}
-  ####### INTRODUCTION #########
+  ############### INTRODUCTION ###################
   Edit the general explanatory paragraph below if you want to change the pitch.
 {% endcomment %}
 {% if page.carpentry == "swc" %}
@@ -89,11 +89,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 {% if page.latlng %}
 <p id="where">
-<strong>Where:</strong> The workshop will be located on the Roeterseiland Campus ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>. We will use two different rooms:  
-<ul>
-	<li>Monday: <a href="https://rooster.uva.nl/locationinfo/331E003?mg=2018">Room E0.03</a></li>
-	<li>Tuesday: <a href="https://rooster.uva.nl/locationinfo/432002?mg=2018">Room M0.02</a></li>
-</ul>
+<strong>Where:</strong> The workshop will be located in room G3.10 ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>. 
 </p>
 {% endif %}
 
@@ -104,13 +100,11 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 <p id="requirements">
   <strong>Requirements:</strong> Participants must bring a laptop with a
-  Linux, Mac or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges
-  on. They should have a few specific software packages installed (listed
-  <a href="#setup">below</a>). They are also required to abide by
+  Linux, Mac or Windows operating system (not a tablet, Chromebook, etc.) that they have administrative privileges on. They should have a few specific software packages installed (listed <a href="#setup">below</a>). They are also required to abide by
   {% if page.carpentry == "swc" %}
   Software Carpentry's
   {% elsif page.carpentry == "dc" %}
-  Data Carpentry's
+  the following 
   {% elsif page.carpentry == "lc" %}
   Library Carpentry's
   {% endif %}
