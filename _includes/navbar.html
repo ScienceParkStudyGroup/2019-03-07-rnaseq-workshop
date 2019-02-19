@@ -18,9 +18,6 @@
 
 	      {% comment %} Always show code of conduct. {% endcomment %}
         <li><a href="{{ page.root }}{% link CODE_OF_CONDUCT.md %}">Code of Conduct</a></li>
-
-        {% if site.kind == "lesson" %}
-	     
         
         {% comment %} Show lesson episodes for lessons. {% endcomment %}
         <li class="dropdown">
@@ -29,11 +26,8 @@
             {% for episode in site.episodes %}
             <li><a href="{{ page.root }}{{ episode.url }}">{{ episode.title }}</a></li>
             {% endfor %}
-	    <li role="separator" class="divider"></li>
-            <li><a href="{{ page.root }}{% link aio.md %}">All in one page (Beta)</a></li>
           </ul>
         </li>
-	      {% endif %}
 
 	{% comment %} Show extras for lessons or if this is the main workshop-template repo (where they contain documentation). {% endcomment %}
 	{% if site.kind == "lesson" %}
