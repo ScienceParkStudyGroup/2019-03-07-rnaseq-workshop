@@ -15,7 +15,8 @@ keypoints:
 
 ---
 ## How sequencing works
-https://github.com/hbctraining/Intro-to-rnaseq-hpc-O2/blob/master/lectures/rna-seq_design.pdf
+
+Presentation available [here](../assets/rna-seq_design.pdf)
 
 ## Credits
 [Harvard Chan Bioinformatics Core](http://bioinformatics.sph.harvard.edu/)
