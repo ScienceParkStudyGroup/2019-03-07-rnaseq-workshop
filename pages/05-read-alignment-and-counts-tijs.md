@@ -5,7 +5,7 @@
 
 We perform read alignment or mapping to determine where in the genome our reads originated from. There are a number of tools to
 choose from and, while there is no gold standard, there are some tools that are better suited for particular NGS analyses. We will be
-using the [hisat2](http://bio-bwa.sourceforge.net/).
+using the [hisat2](http://ccb.jhu.edu/software/hisat2/index.shtml).
 
 The alignment process consists of two steps:
 
