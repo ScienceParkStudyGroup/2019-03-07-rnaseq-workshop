@@ -37,32 +37,49 @@ makes this feasible. Standards ensure that data is stored in a way that is gener
 within the community. The tools that are used to analyze data at different stages of the workflow are therefore 
 built under the assumption that the data will be provided in a specific format.  
 
+
 # Starting with Data
 
-Often times, the first step in a bioinformatics workflow is getting the data you want to work with onto a computer where you can work with it. If you have sequenced your own data, the sequencing center will usually provide you with a link that you can use to download your data. Today we will be working with publicly available sequencing data.
+Often times, the first step in a bioinformatics workflow is getting the data you want to work with onto a computer where you can work with it. If you have sequenced your own data, the sequencing center will usually provide you with a link that you can use to download your data. Today we will be working with a dataset made available by Max van Hooren.
 
-We are studying a population of *Escherichia coli* (designated Ara-3), which were propagated for more than 50,000 generations in a glucose-limited minimal medium. We will be working with three samples from this experiment, one from 5,000 generations, one from 15,000 generations, and one from 50,000 generations. The population changed substantially during the course of the experiment, and we will be exploring how with our variant calling workflow. 
+We are studying a drought experiment containing 6 arabidopsis shoot samples. All grown 12 days on agar, 9 days on vermiculite with media. Then the drought group (21, 23, 24) got their media taken away, while the control group (06, 07, 08) kept their media for another 6 days after which the samples were harvested. 
 
-The data are paired-end, so we will download two files for each sample. We will use the [European Nucleotide Archive](https://www.ebi.ac.uk/ena) to get our data. The ENA "provides a comprehensive record of the world's nucleotide sequencing information, covering raw sequencing data, sequence assembly information and functional annotation." The ENA also provides sequencing data in the fastq format, an important format for sequencing reads that we will be learning about today. 
+From these samples RNA was sequenced (Ion-torrent). You will be provided with a subset of the data, 6 raw sequence files, containing 1.000.000 single-end reads each. Futher more you will be provided the arabidopsis genome fasta file, an annotation file and the environment file ammong others.
 
 To download the data, run the commands below. It will take about 10 minutes to download the files.
 ~~~
-mkdir -p ~/dc_workshop/data/untrimmed_fastq/
-cd ~/dc_workshop/data/untrimmed_fastq
-
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_1.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/004/SRR2589044/SRR2589044_2.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_1.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/003/SRR2584863/SRR2584863_2.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_1.fastq.gz
-curl -O ftp://ftp.sra.ebi.ac.uk/vol1/fastq/SRR258/006/SRR2584866/SRR2584866_2.fastq.gz 
+wget path and name of the zipped folder containing all the data
 ~~~
 {: .bash}
 
-The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. Let's unzip one of the files so that we can look at the fastq format.
+The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. Let's unzip one of the files so that we can look at all the files.
 
 ~~~
-$ gunzip SRR2584863_1.fastq.gz 
+$ gunzip datafolder.gz 
+~~~
+{: .bash}
+
+# Setting up the environment
+
+The commands used for the analysis we will do are not known by basic bash. For this we will have to create and activate an environment in wich all the commands will run.
+
+We will be using miniconda to create and activate the environment.  
+
+To download and install miniconda, use the following commands:
+~~~
+$ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
+
+$ bash Miniconda3-latest-Linux-x86_64.sh
+~~~
+{: .bash}
+
+Next with the use of conda and the environment file in the "general" folder we will create and activate the environment:
+~~~
+$ cd ~/RNAseq070319/general
+
+$ conda env create --name RNAseq --file RNAseq.yaml
+
+$ conda activate RNAseq
 ~~~
 {: .bash}
 
@@ -88,7 +105,7 @@ We can view the first complete read in one of the files our dataset by using `he
 the first four lines. 
 
 ~~~
-$ head -n 4 SRR2584863_1.fastq 
+$ head -n 4 sub06.fastq 
 ~~~
 {: .bash}
 
@@ -206,45 +223,24 @@ Here, we see positions within the read in which the boxes span a much wider rang
 
 ## Running FastQC  
 
-We will now assess the quality of the reads that we downloaded. First, make sure you're still in the `untrimmed_fastq` directory
+We will now assess the quality of the reads that we downloaded. First, we need to make an output directory for the fastqc results to be stored. This we want to do in the 'RNAseq070319' directory. 
 
 ~~~
-$ cd ~/dc_workshop/data/untrimmed_fastq/ 
+$ cd ~/RNAseq070319
+
+$ mkdir fastqc
 ~~~
 {: .bash}
 
-> ## Exercise
-> 
->  How big are the files?
-> (Hint: Look at the options for the `ls` command to see how to show
-> file sizes.)
->
->> ## Solution
->>  
->> ~~~
->> $ ls -l -h
->> ~~~
->> {: .bash}
->> 
->> ~~~
->> -rw-rw-r-- 1 dcuser dcuser 545M Jul  6 20:27 SRR2584863_1.fastq
->> -rw-rw-r-- 1 dcuser dcuser 183M Jul  6 20:29 SRR2584863_2.fastq.gz
->> -rw-rw-r-- 1 dcuser dcuser 309M Jul  6 20:34 SRR2584866_1.fastq.gz
->> -rw-rw-r-- 1 dcuser dcuser 296M Jul  6 20:37 SRR2584866_2.fastq.gz
->> -rw-rw-r-- 1 dcuser dcuser 124M Jul  6 20:22 SRR2589044_1.fastq.gz
->> -rw-rw-r-- 1 dcuser dcuser 128M Jul  6 20:24 SRR2589044_2.fastq.gz
->> ~~~
->> {: .output}
->> 
->> There are six FASTQ files ranging from 124M (124MB) to 545M. 
->> 
-> {: .solution}
-{: .challenge}
-
-FastQC can accept multiple file names as input, and on both zipped and unzipped files, so we can use the \*.fastq* wildcard to run FastQC on all of the FASTQ files in this directory.
+Next we want to loop through the raw data files in the 'rawReads' directory and do the fastqc.
 
 ~~~
-$ fastqc *.fastq* 
+$ cd ~/RNAseq070319/rawReads
+
+$ for filename in *.fastq
+  do 
+    fastqc -o ../fastqc $filename
+  done
 ~~~
 {: .bash}
 
@@ -279,10 +275,18 @@ $
 ~~~
 {: .output}
 
-The FastQC program has created several new files within our
-`data/untrimmed_fastq/` directory. 
+
+If the command doesn't run or you want more information on fastqc, run the following to get the help page.
 
 ~~~
+$ fastqc -h
+~~~
+
+But if all went right, the FastQC program will have created several new files within our
+'~/RNAseq070319/rawReads` directory. 
+
+~~~
+$ cd ~/RNAseq070319/fastqc
 $ ls 
 ~~~
 {: .bash}
