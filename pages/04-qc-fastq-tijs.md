@@ -46,33 +46,22 @@ You will see an automatically updating output message telling you the
 progress of the analysis. It will start like this: 
 
 ~~~
-Started analysis of SRR2584863_1.fastq
-Approx 5% complete for SRR2584863_1.fastq
-Approx 10% complete for SRR2584863_1.fastq
-Approx 15% complete for SRR2584863_1.fastq
-Approx 20% complete for SRR2584863_1.fastq
-Approx 25% complete for SRR2584863_1.fastq
-Approx 30% complete for SRR2584863_1.fastq
-Approx 35% complete for SRR2584863_1.fastq
-Approx 40% complete for SRR2584863_1.fastq
-Approx 45% complete for SRR2584863_1.fastq
+Started analysis of sub06.fastq
+Approx 5% complete for sub06.fastq
+Approx 10% complete for sub06.fastq
+Approx 15% complete for sub06.fastq
+Approx 20% complete for sub06.fastq
+…
+Approx 85% complete for sub24.fastq
+Approx 90% complete for sub24.fastq
+Approx 95% complete for sub24.fastq
+Approx 100% complete for sub24.fastq
+Analysis complete for sub24.fastq
 ~~~
 {: .output}
 
 In total, it should take about five minutes for FastQC to run on all
-six of our FASTQ files. When the analysis completes, your prompt
-will return. So your screen will look something like this:
-
-~~~
-Approx 80% complete for SRR2589044_2.fastq.gz
-Approx 85% complete for SRR2589044_2.fastq.gz
-Approx 90% complete for SRR2589044_2.fastq.gz
-Approx 95% complete for SRR2589044_2.fastq.gz
-Analysis complete for SRR2589044_2.fastq.gz
-$
-~~~
-{: .output}
-
+six of our FASTQ files.
 
 If the command doesn't run or you want more information on fastqc, run the following to get the help page.
 
@@ -81,7 +70,7 @@ $ fastqc -h
 ~~~
 
 But if all went right, the FastQC program will have created several new files within our
-'~/RNAseq070319/rawReads` directory. 
+'~/RNAseq070319/fastqc` directory. 
 
 ~~~
 $ cd ~/RNAseq070319/fastqc
@@ -90,12 +79,7 @@ $ ls
 {: .bash}
 
 ~~~
-SRR2584863_1.fastq        SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-SRR2584863_1_fastqc.zip   SRR2584866_1.fastq.gz     SRR2589044_1.fastq.gz
-SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
-SRR2584863_2.fastq.gz     SRR2584866_2.fastq.gz     SRR2589044_2.fastq.gz
+give overview od=f created files
 ~~~
 {: .output}
 
@@ -1067,3 +1051,91 @@ $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
 > If *you* type `>` or `$` yourself, it is an instruction from you that
 > the shell to redirect output or get the value of a variable.
 {: .callout}
+
+
+
+
+
+
+
+
+# Trimming and filtering
+
+Before we will do the alignment we need to remove sequences of low quality and sequences that are to short (below 25 bases). 
+Also in this case we will trim down long sequences to 100 bases, quality of the Ion-torrent reads drops the further it gets.
+When making use of illumina reads this is not as much of a problem and 3'-trimming would then be a waste of data.
+
+To start off make a directory trimmed for the output and then back to the rawReads directory.
+
+~~~
+$ cd ~/RNAseq070319/
+$ mkdir trimmed
+$ cd ~/RNAseq070319/rawReads/
+~~~
+{: .bash}
+
+When doing the fastqc only input files needed to be specified. In this case both the input and a matching output filenames need to be given.
+this can be done with the help of 'basename'
+
+~~~
+$ for fastq in *.fastq
+do
+ echo inputfile $fastq
+ echo outputfile "$(basename $fastq .fastq)"_qc.fq
+done
+~~~
+{: .bash}
+
+This be be producing the following list
+
+~~~
+list of inout and output files.
+~~~
+{: .output}
+
+Next we can start writing the trimmomatic command
+Again starting with a dry run with echo.
+
+~~~
+$ for fastq in *.fastq
+do
+    echo trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/"$(basename "$fastq" .fastq)"_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+done
+~~~
+{: .bash}
+
+should be producing something like this
+
+~~~
+trimmomatic SE -phred33 -threads 2 sub06.fastq ../trimmed/sub06_qc.fq ILLUMINACLIP:../general/adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+trimmomatic SE -phred33 -threads 2 sub07.fastq ../trimmed/sub07_qc.fq ILLUMINACLIP:../general/adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+trimmomatic SE -phred33 -threads 2 sub08.fastq ../trimmed/sub08_qc.fq ILLUMINACLIP:../general/adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+trimmomatic SE -phred33 -threads 2 sub21.fastq ../trimmed/sub21_qc.fq ILLUMINACLIP:../general/adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+trimmomatic SE -phred33 -threads 2 sub23.fastq ../trimmed/sub23_qc.fq ILLUMINACLIP:../general/adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+trimmomatic SE -phred33 -threads 2 sub24.fastq ../trimmed/sub24_qc.fq ILLUMINACLIP:../general/adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+~~~
+{: .output}
+
+If it al seems ok rerun with out 'echo'
+
+~~~
+$ for fastq in *.fastq
+do
+    trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/"$(basename "$fastq" .fastq)"_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+done
+~~~
+{: .bash}
+
+The following should be apearing:
+
+
+~~~
+TrimmomaticSE: Started with arguments:
+ -phred33 -threads 2 sub06.fastq ../trimmed/sub06_qc.fq ILLUMINACLIP:../general/adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+…
+Input Reads: 1000000 Surviving: 887553 (88.76%) Dropped: 112447 (11.24%)
+TrimmomaticSE: Completed successfully
+~~~
+{: .output}
+
+It's possible to scroll up to check if the percentage of surviving/ dropped is within the same range in all of the samples. 
