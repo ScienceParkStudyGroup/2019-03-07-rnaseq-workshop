@@ -31,17 +31,38 @@ $ hisat2-build -p 5 ath.fas ath --quiet
 While the index is created, you will see output something like this:
 
 ~~~
-[bwa_index] Pack FASTA... 0.04 sec
-[bwa_index] Construct BWT for the packed sequence...
-[bwa_index] 1.05 seconds elapse.
-[bwa_index] Update BWT... 0.03 sec
-[bwa_index] Pack forward-only FASTA... 0.02 sec
-[bwa_index] Construct SA from BWT and Occ... 0.57 sec
-[main] Version: 0.7.17-r1188
-[main] CMD: bwa index data/ref_genome/ecoli_rel606.fasta
-[main] Real time: 1.765 sec; CPU: 1.715 sec
+Settings:
+  Output files: "ath.*.ht2"
+  Line rate: 6 (line is 64 bytes)
+  Lines per side: 1 (side is 64 bytes)
+  Offset rate: 4 (one in 16)
+  FTable chars: 10
+ …
+  numLines: 622300
+  gbwtTotLen: 39827200
+  gbwtTotSz: 39827200
+  reverse: 0
+  linearFM: Yes
+Total time for call to driver() for forward index: 00:01:09
+
 ~~~
 {: .output}
+
+
+The indexing should have produced 8 hisat2 index files (.ht2). Use the following command to see if they're really there.
+
+~~~
+$ ls *.ht2
+~~~
+{: .bash}
+
+result should be:
+~~~
+ath.1.ht2  ath.2.ht2  ath.3.ht2  ath.4.ht2  ath.5.ht2  ath.6.ht2  ath.7.ht2  ath.8.ht2
+~~~
+{: .output}
+
+
 
 ### Align reads to reference genome
 
