@@ -132,7 +132,7 @@ that follows corresponds to alignment information for a single read. Each alignm
 mapping information and a variable number of other fields for aligner specific information. An example entry from a SAM file is 
 displayed below with the different fields highlighted.
 
-![sam_bam1](../img/sam_bam.png)
+![try-out](../assets/img/lc-icon-black.png "first")
 
 
 ![sam_bam2](../img/sam_bam3.png)
