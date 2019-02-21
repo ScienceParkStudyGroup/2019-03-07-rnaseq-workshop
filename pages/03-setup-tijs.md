@@ -29,7 +29,7 @@ description of each step.
 2. Quality control - Trimming and/or filtering reads (if necessary)
 3. Align reads to reference genome 
 4. Perform post-alignment clean-up
-5. Variant calling
+5. Create counts table
 
 These workflows in bioinformatics adopt a plug-and-play approach in that the output of one tool can be easily
 used as input to another tool without any extensive configuration. Having standards for data formats is what 
@@ -44,7 +44,7 @@ Often times, the first step in a bioinformatics workflow is getting the data you
 
 We are studying a drought experiment containing 6 arabidopsis shoot samples. All grown 12 days on agar, 9 days on vermiculite with media. Then the drought group (21, 23, 24) got their media taken away, while the control group (06, 07, 08) kept their media for another 6 days after which the samples were harvested. 
 
-From these samples RNA was sequenced (Ion-torrent). You will be provided with a subset of the data, 6 raw sequence files, containing 1.000.000 single-end reads each. Futher more you will be provided the arabidopsis genome fasta file, an annotation file and the environment file ammong others.
+From these samples RNA was sequenced (Ion-torrent)of wich you will be provided with a subset, 6 raw sequence files, containing 1.000.000 single-end reads each. Futher more you get the arabidopsis genome fasta file, an annotation file and the environment file ammong others , together in 1 zipped file.
 
 To download the data, run the commands below. It will take about 10 minutes to download the files.
 ~~~
