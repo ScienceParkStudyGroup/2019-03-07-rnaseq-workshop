@@ -492,6 +492,29 @@ $ cd ~/RNAseq070319/rawReads/
 When doing the fastqc only input files needed to be specified. In this case both the input and a matching output filenames need to be given.
 this can be done with the help of 'basename'
 
+
+
+
+
+
+| step   | meaning |
+| ------- | ---------- |
+| `ILLUMINACLIP` | Perform adapter removal |
+| `SLIDINGWINDOW` | Perform sliding window trimming, cutting once the average quality within the window falls below a threshold. |
+| `LEADING`  | Cut bases off the start of a read, if below a threshold quality.  |
+|  `TRAILING` |  Cut bases off the end of a read, if below a threshold quality. |
+| `CROP`  |  Cut the read to a specified length. |
+|  `HEADCROP` |  Cut the specified number of bases from the start of the read. |
+| `MINLEN`  |  Drop an entire read if it is below a specified length. |
+|  `TOPHRED33` | Convert quality scores to Phred-33.  |
+|  `TOPHRED64` |  Convert quality scores to Phred-64. |
+
+
+
+
+
+
+
 ~~~
 $ for fastq in *.fastq
 do
