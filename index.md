@@ -89,7 +89,7 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
 
 {% if page.latlng %}
 <p id="where">
-<strong>Where:</strong> The workshop will be located in room G3.10 ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>. 
+<strong>Where:</strong> The workshop will be located in room G3.10 ({{page.address}}). Find the exact locations on <a href="//www.openstreetmap.org/?mlat={{page.latlng | replace:',','&mlon='}}&zoom=16">OpenStreetMap</a> or <a href="//maps.google.com/maps?q={{page.latlng}}">Google Maps</a>.
 </p>
 {% endif %}
 
@@ -104,14 +104,14 @@ Explain who your audience is.  (In particular, tell readers if the workshop is o
   {% if page.carpentry == "swc" %}
   Software Carpentry's
   {% elsif page.carpentry == "dc" %}
-  the following 
+  the following
   {% elsif page.carpentry == "lc" %}
   Library Carpentry's
   {% endif %}
   <a href="{{site.swc_site}}/conduct.html">Code of Conduct</a>.
 </p>
 
-<p><strong>Registration:</strong> All free for staff from the University of Amsterdam. Master students and staff from the <a href="http://gls.uva.nl/">Green Life Sciences cluster</a> have 10 seats reserved while 10 other seats are reserved for other UvA students and staff. Please get your ticket using the Eventbrite widget (see above).</p>
+<p><strong>Registration:</strong> All free for Green Life Sciences students and staff from the University of Amsterdam. If not all seats are claimed by the <a href="http://gls.uva.nl/">Green Life Sciences cluster</a>, then the remaining seats will be open for other UvA students and staff. Please get your ticket using the Eventbrite widget (see above).</p>
 
 <p><strong>Organisers:</strong> This workshop is organized by the <a href="https://www.scienceparkstudygroup.info/">Science Park Study Group</a> members as part of its recurring activities. Please visit our website for other events that take place in Amsterdam (usually Science Park). If there are any questions get in touch and send us an email (see <a href="#contact">contact</a>) </p>
 
@@ -230,7 +230,7 @@ You can download all files (fastq sequencing files, genome sequence in fasta for
 
 <h3> Softwares</h3>
 <p>
-  To participate to this 
+  To participate to this
   {% if page.carpentry == "swc" %}
   Software Carpentry
   {% elsif page.carpentry == "dc" %}
@@ -399,5 +399,3 @@ You can download all files (fastq sequencing files, genome sequence in fasta for
     </div>
   </div>
 </div> {% comment %} End of 'editor' section. {% endcomment %}
-
-
