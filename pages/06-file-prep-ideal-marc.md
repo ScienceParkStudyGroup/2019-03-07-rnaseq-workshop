@@ -11,5 +11,9 @@ objectives:
 keypoints:
 - "Use the `Data Setup` panel to load the `counts` and `design` files."
 ---
+## Outline
+1. Explanation of the `counts.tsv` and the `design.tsv` files
+2. Generation a `DESeqDataSet` data object in R/Shiny
 
 ## Counts and design files
+To use the `ideal`
