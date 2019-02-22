@@ -496,6 +496,7 @@ In the programm the following arguments can be used.
 
 | step   | meaning |
 | ------- | ---------- |
+| `SE` or `PE` | Reads are single end or paired end. |
 | `ILLUMINACLIP` | Perform adapter removal |
 | `SLIDINGWINDOW` | Perform sliding window trimming, cutting once the average quality within the window falls below a threshold. |
 | `LEADING`  | Cut bases off the start of a read, if below a threshold quality.  |
