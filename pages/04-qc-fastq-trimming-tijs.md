@@ -489,13 +489,10 @@ $ cd ~/RNAseq070319/rawReads/
 ~~~
 {: .bash}
 
-When doing the fastqc only input files needed to be specified. In this case both the input and a matching output filenames need to be given.
-this can be done with the help of 'basename'
 
 
-
-
-
+The trimming and quality filtering will be done with trimmomatic.
+In the programm the following arguments can be used.
 
 | step   | meaning |
 | ------- | ---------- |
@@ -510,16 +507,26 @@ this can be done with the help of 'basename'
 |  `TOPHRED64` |  Convert quality scores to Phred-64. |
 
 
+To run this on a single sample it looks something like this
+~~~
+trimmomatic SE -phred33 -threads 2 sub06.fastq ../trimmed/sub06_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+~~~
+{: .bash}
 
 
+Of cource we don't want to do this for all the reads seperately so lets create a loop through all the fastq files.
 
+When doing the fastqc only input files needed to be specified. In this case both the input and a matching output filenames need to be given.
+this can be done with the help of 'basename'
 
 
 ~~~
 $ for fastq in *.fastq
 do
  echo inputfile $fastq
- echo outputfile "$(basename $fastq .fastq)"_qc.fq
+ base="$(basename $fastq .fastq)"_qc.fq
+ echo outputfile $base
+ echo
 done
 ~~~
 {: .bash}
@@ -529,26 +536,32 @@ This be be producing the following list
 ~~~
 inputfile sub06.fastq
 outputfile sub06_qc.fq
+
 inputfile sub07.fastq
 outputfile sub07_qc.fq
+
 inputfile sub08.fastq
 outputfile sub08_qc.fq
+
 inputfile sub21.fastq
 outputfile sub21_qc.fq
+
 inputfile sub23.fastq
 outputfile sub23_qc.fq
+
 inputfile sub24.fastq
 outputfile sub24_qc.fq
 ~~~
 {: .output}
 
-Next we can start writing the trimmomatic command
+Next we can start writing the trimmomatic loop.
 Again starting with a dry run with echo.
 
 ~~~
 $ for fastq in *.fastq
 do
-    echo trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/"$(basename "$fastq" .fastq)"_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+  outputFile="$(basename $fastq .fastq)"_qc.fq
+  echo trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/$outputFile ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3     SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
 done
 ~~~
 {: .bash}
