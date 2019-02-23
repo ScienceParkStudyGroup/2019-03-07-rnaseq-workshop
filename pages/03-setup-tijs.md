@@ -101,6 +101,19 @@ include...
 |3|Always begins with a '+' and sometimes the same info in line 1|
 |4|Has a string of characters which represent the quality scores; must have same number of characters as line 2|
 
+The quality scores. 
+
+|Phred Quality Score |Probability of incorrect base call |Base call accuracy|
+|:-------------------|:---------------------------------:|-----------------:|
+|10	|1 in 10 |	90%|
+|20	|1 in 100|	99%|
+|30	|1 in 1000|	99.9%|
+|40	|1 in 10,000|	99.99%|
+|50	|1 in 100,000|	99.999%|
+|60	|1 in 1,000,000|	99.9999%|
+
+
+
 We can view the first complete read in one of the files our dataset by using `head` to look at
 the first four lines. 
 
