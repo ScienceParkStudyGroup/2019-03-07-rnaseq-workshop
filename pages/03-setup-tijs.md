@@ -101,17 +101,6 @@ include...
 |3|Always begins with a '+' and sometimes the same info in line 1|
 |4|Has a string of characters which represent the quality scores; must have same number of characters as line 2|
 
-The quality scores. 
-
-|Phred Quality Score |Probability of incorrect base call |Base call accuracy|
-|:-------------------|:---------------------------------:|-----------------:|
-|10	|1 in 10 |	90%|
-|20	|1 in 100|	99%|
-|30	|1 in 1000|	99.9%|
-|40	|1 in 10,000|	99.99%|
-|50	|1 in 100,000|	99.999%|
-|60	|1 in 1,000,000|	99.9999%|
-
 
 
 We can view the first complete read in one of the files our dataset by using `head` to look at
@@ -123,10 +112,10 @@ $ head -n 4 sub06.fastq
 {: .bash}
 
 ~~~
-@SRR2584863.1 HWI-ST957:244:H73TDADXX:1:1101:4712:2181/1
-TTCACATCCTGACCATTCAGTTGAGCAAAATAGTTCTTCAGTGCCTGTTTAACCGAGTCACGCAGGGGTTTTTGGGTTACCTGATCCTGAGAGTTAACGGTAGAAACGGTCAGTACGTCAGAATTTACGCGTTGTTCGAACATAGTTCTG
+@2C2U6:02796:13247
+GTAGGATAGTGGCCTACCATGGTGGTAACGGGTGACGGAGAATTAGGGTTCGATTCCGGAGAGGGAGCCTGAGAACGGCTACCACATCCAAGGAAGGCAGCAGGC
 +
-CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD:BBBDDACCCCAA@@CA@C>C3>@5(8&>C:9?8+89<4(:83825C(:A#########################
+9?=?;>><<=>9>9;;85;//*/=7=@:<<A8=A>@C;>?>9<9;;;4<7=<>>9=9=9>??>C8@<<9=?A//)/829<==9<==<<7<6;6:8=8<<<=<<8=
 ~~~
 {: .output}
 
@@ -138,7 +127,7 @@ represents the numerical quality score for an individual nucleotide. For example
 above, the quality score line is: 
 
 ~~~
-CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD:BBBDDACCCCAA@@CA@C>C3>@5(8&>C:9?8+89<4(:83825C(:A#########################
+9?=?;>><<=>9>9;;85;//*/=7=@:<<A8=A>@C;>?>9<9;;;4<7=<>>9=9=9>??>C8@<<9=?A//)/829<==9<==<<7<6;6:8=8<<<=<<8=
 ~~~
 {: .output}
 
@@ -154,51 +143,34 @@ Quality score:    0........10........20........30........40
 ~~~
 {: .output}
 
+
 Each quality score represents the probability that the corresponding nucleotide call is
 incorrect. This quality score is logarithmically based, so a quality score of 10 reflects a
 base call accuracy of 90%, but a quality score of 20 reflects a base call accuracy of 99%. 
 These probability values are the results from the base calling algorithm and dependent on how 
 much signal was captured for the base incorporation. 
 
+|Phred Quality Score |Probability of incorrect base call |Base call accuracy|
+|:-------------------|:---------------------------------:|-----------------:|
+|10	|1 in 10 |	90%|
+|20	|1 in 100|	99%|
+|30	|1 in 1000|	99.9%|
+|40	|1 in 10,000|	99.99%|
+|50	|1 in 100,000|	99.999%|
+|60	|1 in 1,000,000|	99.9999%|
+
+
 Looking back at our read: 
 
 ~~~
-@SRR2584863.1 HWI-ST957:244:H73TDADXX:1:1101:4712:2181/1
-TTCACATCCTGACCATTCAGTTGAGCAAAATAGTTCTTCAGTGCCTGTTTAACCGAGTCACGCAGGGGTTTTTGGGTTACCTGATCCTGAGAGTTAACGGTAGAAACGGTCAGTACGTCAGAATTTACGCGTTGTTCGAACATAGTTCTG
+@2C2U6:02796:13247
+GTAGGATAGTGGCCTACCATGGTGGTAACGGGTGACGGAGAATTAGGGTTCGATTCCGGAGAGGGAGCCTGAGAACGGCTACCACATCCAAGGAAGGCAGCAGGC
 +
-CCCFFFFFGHHHHJIJJJJIJJJIIJJJJIIIJJGFIIIJEDDFEGGJIFHHJIJJDECCGGEGIIJFHFFFACD:BBBDDACCCCAA@@CA@C>C3>@5(8&>C:9?8+89<4(:83825C(:A#########################
+9?=?;>><<=>9>9;;85;//*/=7=@:<<A8=A>@C;>?>9<9;;;4<7=<>>9=9=9>??>C8@<<9=?A//)/829<==9<==<<7<6;6:8=8<<<=<<8=
 ~~~
 {: .output}
 
-we can now see that there are a range of quality score, but that the end of the sequence
-very poor (`#` = a quality score of 2). 
-
-> ## Exercise
-> 
-> What is the last read in the `SRR2584863_1.fastq ` file? How confident
-> are you in this read? 
-> 
->> ## Solution
->> ~~~
->> $ tail -n 4 SRR2584863_1.fastq 
->> ~~~
->> {: .bash}
->> 
->> ~~~
->> @SRR2584863.1553259 HWI-ST957:245:H73R4ADXX:2:2216:21048:100894/1
->> CTGCAATACCACGCTGATCTTTCACATGATGTAAGAAAAGTGGGATCAGCAAACCGGGTGCTGCTGTGGCTAGTTGCAGCAAACCATGCAGTGAACCCGCCTGTGCTTCGCTATAGCCGTGACTGATGAGGATCGCCGGAAGCCAGCCAA
->> +
->> CCCFFFFFHHHHGJJJJJJJJJHGIJJJIJJJJIJJJJIIIIJJJJJJJJJJJJJIIJJJHHHHHFFFFFEEEEEDDDDDDDDDDDDDDDDDCDEDDBDBDDBDDDDDDDDDBDEEDDDD7@BDDDDDD>AA>?B?<@BDD@BDC?BDA?
->> ~~~
->> {: .output}
->> 
->> This read has more consistent quality at its end than the first 
->> read that we looked at, but still has a range of quality scores, 
->> most of them high. We will look at variations in position-based quality
->> in just a moment.
->> 
-> {: .solution}
-{: .challenge}
+we can now see that there are a range of quality scores, ranginging from quite low (* = 9) to higher (C = 34)
 
 
 ## Assessing Quality using FastQC
