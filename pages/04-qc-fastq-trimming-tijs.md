@@ -105,19 +105,6 @@ sub07_fastqc.html  sub08_fastqc.zip   sub23_fastqc.html  sub24_fastqc.zip
 ~~~
 {: .output}
 
-For each input FASTQ file, FastQC has created a `.zip` file and a
-`.html` file. The `.zip` file extension indicates that this is 
-actually a compressed set of multiple output files. We'll be working
-with these output files soon. The `.html` file is a stable webpage
-displaying the summary report for each of our samples.
-
-Now we can navigate into this results directory and do some closer
-inspection of our output files.
-
-~~~
-$ cd ~/dc_workshop/results/fastqc_untrimmed_reads/ 
-~~~
-{: .bash}
 
 ## Viewing the FastQC results
 
@@ -125,24 +112,24 @@ If we were working on our local computers, we'd be able to display each of these
 HTML files as a webpage: 
  
 ~~~
-$ open SRR2584863_1_fastqc.html 
+$ open sub06_fastqc.html 
 ~~~
 {: .bash}
 
-However, if you try this on our AWS instance, you'll get an error: 
+However, if you try this on our genseq instance, you'll get an error: 
 
 ~~~
 Couldn't get a file descriptor referring to the console
 ~~~
 {: .output}
 
-This is because the AWS instance we're using doesn't have any web
+This is because the genseq instance we're using doesn't have any web
 browsers installed on it, so the remote computer doesn't know how to 
 open the file. We want to look at the webpage summary reports, so 
 let's transfer them to our local computers (i.e. your laptop).
 
 To transfer a file from a remote server to our own machines, we will
-use `scp`, which we learned yesterday in the Shell Genomics lesson. 
+use `scp`.
 
 First we
 will make a new directory on our computer to store the HTML files
@@ -158,7 +145,7 @@ $ mkdir -p ~/Desktop/fastqc_html
 Now we can transfer our HTML files to our local computer using `scp`.
 
 ~~~
-$ scp dcuser@ec2-34-238-162-94.compute-1.amazonaws.com:~/dc_workshop/results/fastqc_untrimmed_reads/*.html ~/Desktop/fastqc_html
+$ scp tbliek@genseq-cn02.science.uva.nl:~/RNAseq070319/fastqc/*.html ~/Desktop/fastqc_html
 ~~~
 {: .bash}
 
@@ -234,16 +221,15 @@ in your terminal program that is connected to your AWS instance
 our results subdirectory.   
 
 ~~~
-$ cd ~/dc_workshop/results/fastqc_untrimmed_reads/ 
+$ cd ~/RNAseq070319/fastqc/
 $ ls 
 ~~~
 {: .bash}
 
 ~~~
-SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
+sub06_fastqc.html  sub07_fastqc.zip   sub21_fastqc.html  sub23_fastqc.zip
+sub06_fastqc.zip   sub08_fastqc.html  sub21_fastqc.zip   sub24_fastqc.html
+sub07_fastqc.html  sub08_fastqc.zip   sub23_fastqc.html  sub24_fastqc.zip
 ~~~
 {: .output}
 
@@ -260,11 +246,11 @@ $ unzip *.zip
 
 ~~~
 Archive:  SRR2584863_1_fastqc.zip
-caution: filename not matched:  SRR2584863_2_fastqc.zip
-caution: filename not matched:  SRR2584866_1_fastqc.zip
-caution: filename not matched:  SRR2584866_2_fastqc.zip
-caution: filename not matched:  SRR2589044_1_fastqc.zip
-caution: filename not matched:  SRR2589044_2_fastqc.zip
+caution: filename not matched:  sub07_fastqc.zip
+caution: filename not matched:  sub08_fastqc.zip
+caution: filename not matched:  sub21_fastqc.zip
+caution: filename not matched:  sub22_fastqc.zip
+caution: filename not matched:  sub24_fastqc.zip
 ~~~
 {: .output}
 
