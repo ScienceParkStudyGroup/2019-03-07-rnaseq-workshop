@@ -21,7 +21,16 @@ $ cd ~/RNAseq070319/rawReads
 {: .bash}
 
 
-Before doing the fastq, it's possible to do a "dry" with the use of echo.
+Running fastqc uses the following command
+
+~~~
+fastqc -o ../fastqc $filename
+~~~
+{: .bash}
+
+Of course we don't want to do y=this for all the samples seperately so we can loop through the list of samples and run them all sequentially
+
+With the use of echo you can start off with a "dry run"
 
 ~~~
 $ for filename in *.fastq
@@ -81,7 +90,7 @@ $ fastqc -h
 ~~~
 
 But if all went right, the FastQC program will have created several new files within our
-'~/RNAseq070319/fastqc` directory. 
+`~/RNAseq070319/fastqc` directory. 
 
 ~~~
 $ cd ~/RNAseq070319/fastqc
