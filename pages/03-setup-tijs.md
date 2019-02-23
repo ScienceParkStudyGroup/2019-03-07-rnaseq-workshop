@@ -234,15 +234,11 @@ progress of the analysis. It will start like this:
 
 ~~~
 Started analysis of SRR2584863_1.fastq
-Approx 5% complete for SRR2584863_1.fastq
+Approx 5% complete for sub06.fastq
 Approx 10% complete for SRR2584863_1.fastq
 Approx 15% complete for SRR2584863_1.fastq
 Approx 20% complete for SRR2584863_1.fastq
-Approx 25% complete for SRR2584863_1.fastq
-Approx 30% complete for SRR2584863_1.fastq
-Approx 35% complete for SRR2584863_1.fastq
-Approx 40% complete for SRR2584863_1.fastq
-Approx 45% complete for SRR2584863_1.fastq
+
 ~~~
 {: .output}
 
