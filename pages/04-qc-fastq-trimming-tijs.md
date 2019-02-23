@@ -150,7 +150,7 @@ $ scp tbliek@genseq-cn02.science.uva.nl:~/RNAseq070319/fastqc/*.html ~/Desktop/f
 {: .bash}
 
 As a reminder, the first part
-of the command `dcuser@ec2-34-238-162-94.compute-1.amazonaws.com` is
+of the command `tbliek@genseq-cn02.science.uva.nl` is
 the address for your remote computer. Make sure you replace everything
 after `dcuser@` with your instance number (the one you used to log in). 
 
@@ -276,37 +276,37 @@ In this example, the input is six filenames (one filename for each of our `.zip`
 Each time the loop iterates, it will assign a file name to the variable `filename`
 and run the `unzip` command.
 The first time through the loop,
-`$filename` is `SRR2584863_1_fastqc.zip`. 
-The interpreter runs the command `unzip` on `SRR2584863_1_fastqc.zip`.
+`$filename` is `sub06_fastqc.zip`. 
+The interpreter runs the command `unzip` on `sub06_fastqc.zip`.
 For the second iteration, `$filename` becomes 
-`SRR2584863_2_fastqc.zip`. This time, the shell runs `unzip` on `SRR2584863_2_fastqc.zip`.
+`Ssub07_fastqc.zip`. This time, the shell runs `unzip` on `sun07_fastqc.zip`.
 It then repeats this process for the four other `.zip` files in our directory.
 
 
 When we run our `for` loop, you will see output that starts like this:
 
 ~~~
-Archive:  SRR2589044_2_fastqc.zip
-   creating: SRR2589044_2_fastqc/
-   creating: SRR2589044_2_fastqc/Icons/
-   creating: SRR2589044_2_fastqc/Images/
-  inflating: SRR2589044_2_fastqc/Icons/fastqc_icon.png  
-  inflating: SRR2589044_2_fastqc/Icons/warning.png  
-  inflating: SRR2589044_2_fastqc/Icons/error.png  
-  inflating: SRR2589044_2_fastqc/Icons/tick.png  
-  inflating: SRR2589044_2_fastqc/summary.txt  
-  inflating: SRR2589044_2_fastqc/Images/per_base_quality.png  
-  inflating: SRR2589044_2_fastqc/Images/per_tile_quality.png  
-  inflating: SRR2589044_2_fastqc/Images/per_sequence_quality.png  
-  inflating: SRR2589044_2_fastqc/Images/per_base_sequence_content.png  
-  inflating: SRR2589044_2_fastqc/Images/per_sequence_gc_content.png  
-  inflating: SRR2589044_2_fastqc/Images/per_base_n_content.png  
-  inflating: SRR2589044_2_fastqc/Images/sequence_length_distribution.png  
-  inflating: SRR2589044_2_fastqc/Images/duplication_levels.png  
-  inflating: SRR2589044_2_fastqc/Images/adapter_content.png  
-  inflating: SRR2589044_2_fastqc/fastqc_report.html  
-  inflating: SRR2589044_2_fastqc/fastqc_data.txt  
-  inflating: SRR2589044_2_fastqc/fastqc.fo  
+Archive:  sub06_fastqc.zip
+   creating: sub06_fastqc/
+   creating: sub06_fastqc/Icons/
+   creating: sub06_2_fastqc/Images/
+  inflating: sub06_2_fastqc/Icons/fastqc_icon.png  
+  inflating: sub06_2_fastqc/Icons/warning.png  
+  inflating: sub06_2_fastqc/Icons/error.png  
+  inflating: sub06_2_fastqc/Icons/tick.png  
+  inflating: sub06_2_fastqc/summary.txt  
+  inflating: sub06_2_fastqc/Images/per_base_quality.png  
+  inflating: sub06_2_fastqc/Images/per_tile_quality.png  
+  inflating: sub06_2_fastqc/Images/per_sequence_quality.png  
+  inflating: sub06_2_fastqc/Images/per_base_sequence_content.png  
+  inflating: sub06_2_fastqc/Images/per_sequence_gc_content.png  
+  inflating: sub06_fastqc/Images/per_base_n_content.png  
+  inflating: sub06_fastqc/Images/sequence_length_distribution.png  
+  inflating: sub06_fastqc/Images/duplication_levels.png  
+  inflating: sub06_fastqc/Images/adapter_content.png  
+  inflating: sub06_fastqc/fastqc_report.html  
+  inflating: sub06_fastqc/fastqc_data.txt  
+  inflating: sub06_fastqc/fastqc.fo  
 ~~~
 {: .output}
 
