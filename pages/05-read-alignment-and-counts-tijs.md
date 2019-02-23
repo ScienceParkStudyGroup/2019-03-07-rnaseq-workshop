@@ -21,7 +21,7 @@ The alignment process consists of two steps:
 Our first step is to index the reference genome for use by hisat2. Indexing allows the aligner to quickly find potential alignment sites for query sequences in a genome, which saves time during alignment. Indexing the reference only has to be run once. The only reason you would want to create a new index is if you are working with a different reference genome or you are using a different tool for alignment.
 
 ~~~
-$ cd ~/RNAseqWorkshop/general
+$ cd ~/RNAseq070319/general
 
 $ hisat2-build -p 5 ath.fas ath --quiet
 
@@ -71,7 +71,7 @@ creating the aligtnment (bam-files) is done in two steps. first the aligning it 
 First of course we will need to create a directory to output the alignment files 
 
 ~~~
-$ cd ~/RNAseqWorkshop/
+$ cd ~/RNAseq070319/
 
 $ mkdir mapped
 ~~~
@@ -82,7 +82,7 @@ Next we have to enter the 'trimmed' directory, and loop through the fq files and
 It's good again to first start with a 'dry' run with the use of echo
 
 ~~~
-$ cd ~/RNAseqWorkshop/trimmed/
+$ cd ~/RNAseq070319/trimmed/
 
 $For filename in *.fq
  do
