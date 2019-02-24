@@ -20,11 +20,18 @@ keypoints:
 The __featureCounts__ program used read alignment and annotation information to compute counting values for each of the annotation gene in the genome. That information is stored in the `counts.tsv` file.  
 This file is a tabulated file (columns are separated by a tabulation).     
 
+#### Removing the first line
+We can see that the first line is a comment line:  
+` # Program:featureCounts v1.6.3; Command:"featureCounts" "-t" "exon" "-a" "/home/tbliek/RNAseqWorkshop/genome/annotation.all_transcripts.exon_features.ath.gff3" "-o" "counts.txt" "sub06_qc.bam" "sub07_qc.bam" "sub08_qc.bam" "sub21_qc.bam" "sub23_qc.bam" "sub24_qc.bam"`   
+We need to remove that line because the `ideal` application won't be able to process it.  
+For that, we are going to use the __awk__ language that can be run from the Shell directly.
 
-We can see that the first line is a comment line:
-` # Program:featureCounts v1.6.3; Command:"featureCounts" "-t" "exon" "-a" "/home/tbliek/RNAseqWorkshop/genome/annotation.all_transcripts.exon_features.ath.gff3" "-o" "counts.txt" "sub06_qc.bam" "sub07_qc.bam" "sub08_qc.bam" "sub21_qc.bam" "sub23_qc.bam" "sub24_qc.bam" ` that we need to remove.
+__Removing the first line with awk:__ in the Shell, type the following command  
+ `awk '{if (NR!=1){print}} counts.txt > counts.parsed.txt`  
+ Check that it did the trick `head counts.parsed.txt`. The comment line should be removed.
 
-This is how the first lines look like:   
+#### Removing unnecessary columns (chr,strand,etc.)
+Now our file looks like:   
 
 | Geneid    | Chr                           | Start                         | End                           | Strand      | Length | sub06_qc.bam | sub07_qc.bam | sub08_qc.bam | sub21_qc.bam | sub23_qc.bam | sub24_qc.bam |
 |-----------|-------------------------------|-------------------------------|-------------------------------|-------------|--------|--------------|--------------|--------------|--------------|--------------|--------------|
@@ -34,9 +41,7 @@ This is how the first lines look like:
 | ...       | ...                           | ...                           | ...                           | ...         | ...    | ...          | ...          | ...          | ...          | ...          | ...          |
 
 
-
-
-We need to process that file so that it looks like:  
+We need to remove a few columns so that the file looks like:  
 
 | Geneid    | sub06_qc.bam | sub07_qc.bam | sub08_qc.bam | sub21_qc.bam | sub23_qc.bam | sub24_qc.bam |
 |-----------|--------------|--------------|--------------|--------------|--------------|--------------|
@@ -45,10 +50,6 @@ We need to process that file so that it looks like:
 | AT1G03987 |              |              |              |              |              |              |
 | ...       | ...          | ...          | ...          | ...          | ...          | ...          |
 
-
-For that, we are going to use the __awk__ language that can be run from the Shell directly. Then we will use a basic program called __cut__ that is also executable from the Shell command-line too.   
-__Steps__:  
-1.
-2. Then remove unnecessary columns: `cut -f2,3,4,5,6 --complement counts.parsed.txt > counts.final.txt`
+__Removing a few columns with cut:__ in the Shell, type `cut -f2,3,4,5,6 --complement counts.parsed.txt > counts.final.txt`
 
 ### Design file
