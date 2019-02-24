@@ -1,0 +1,7 @@
+SampleName	condition	fq1
+sub06_qc.bam	control	sub06.fastq
+sub07_qc.bam	control	sub07.fastq
+sub08_qc.bam	control	sub08.fastq
+sub21_qc.bam	drought	sub21.fastq
+sub23_qc.bam	drought	sub23.fastq
+sub24_qc.bam	drought	sub24.fastq
