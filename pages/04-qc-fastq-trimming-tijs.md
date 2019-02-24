@@ -21,7 +21,16 @@ $ cd ~/RNAseq070319/rawReads
 {: .bash}
 
 
-Before doing the fastq, it's possible to do a "dry" with the use of echo.
+Running fastqc uses the following command
+
+~~~
+fastqc -o ../fastqc $filename
+~~~
+{: .bash}
+
+Of course we don't want to do y=this for all the samples seperately so we can loop through the list of samples and run them all sequentially
+
+With the use of echo you can start off with a "dry run"
 
 ~~~
 $ for filename in *.fastq
@@ -81,7 +90,7 @@ $ fastqc -h
 ~~~
 
 But if all went right, the FastQC program will have created several new files within our
-'~/RNAseq070319/fastqc` directory. 
+`~/RNAseq070319/fastqc` directory. 
 
 ~~~
 $ cd ~/RNAseq070319/fastqc
@@ -96,19 +105,6 @@ sub07_fastqc.html  sub08_fastqc.zip   sub23_fastqc.html  sub24_fastqc.zip
 ~~~
 {: .output}
 
-For each input FASTQ file, FastQC has created a `.zip` file and a
-`.html` file. The `.zip` file extension indicates that this is 
-actually a compressed set of multiple output files. We'll be working
-with these output files soon. The `.html` file is a stable webpage
-displaying the summary report for each of our samples.
-
-Now we can navigate into this results directory and do some closer
-inspection of our output files.
-
-~~~
-$ cd ~/dc_workshop/results/fastqc_untrimmed_reads/ 
-~~~
-{: .bash}
 
 ## Viewing the FastQC results
 
@@ -116,24 +112,24 @@ If we were working on our local computers, we'd be able to display each of these
 HTML files as a webpage: 
  
 ~~~
-$ open SRR2584863_1_fastqc.html 
+$ open sub06_fastqc.html 
 ~~~
 {: .bash}
 
-However, if you try this on our AWS instance, you'll get an error: 
+However, if you try this on our genseq instance, you'll get an error: 
 
 ~~~
 Couldn't get a file descriptor referring to the console
 ~~~
 {: .output}
 
-This is because the AWS instance we're using doesn't have any web
+This is because the genseq instance we're using doesn't have any web
 browsers installed on it, so the remote computer doesn't know how to 
 open the file. We want to look at the webpage summary reports, so 
 let's transfer them to our local computers (i.e. your laptop).
 
 To transfer a file from a remote server to our own machines, we will
-use `scp`, which we learned yesterday in the Shell Genomics lesson. 
+use `scp`.
 
 First we
 will make a new directory on our computer to store the HTML files
@@ -149,12 +145,12 @@ $ mkdir -p ~/Desktop/fastqc_html
 Now we can transfer our HTML files to our local computer using `scp`.
 
 ~~~
-$ scp dcuser@ec2-34-238-162-94.compute-1.amazonaws.com:~/dc_workshop/results/fastqc_untrimmed_reads/*.html ~/Desktop/fastqc_html
+$ scp tbliek@genseq-cn02.science.uva.nl:~/RNAseq070319/fastqc/*.html ~/Desktop/fastqc_html
 ~~~
 {: .bash}
 
 As a reminder, the first part
-of the command `dcuser@ec2-34-238-162-94.compute-1.amazonaws.com` is
+of the command `tbliek@genseq-cn02.science.uva.nl` is
 the address for your remote computer. Make sure you replace everything
 after `dcuser@` with your instance number (the one you used to log in). 
 
@@ -225,16 +221,15 @@ in your terminal program that is connected to your AWS instance
 our results subdirectory.   
 
 ~~~
-$ cd ~/dc_workshop/results/fastqc_untrimmed_reads/ 
+$ cd ~/RNAseq070319/fastqc/
 $ ls 
 ~~~
 {: .bash}
 
 ~~~
-SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
+sub06_fastqc.html  sub07_fastqc.zip   sub21_fastqc.html  sub23_fastqc.zip
+sub06_fastqc.zip   sub08_fastqc.html  sub21_fastqc.zip   sub24_fastqc.html
+sub07_fastqc.html  sub08_fastqc.zip   sub23_fastqc.html  sub24_fastqc.zip
 ~~~
 {: .output}
 
@@ -251,11 +246,11 @@ $ unzip *.zip
 
 ~~~
 Archive:  SRR2584863_1_fastqc.zip
-caution: filename not matched:  SRR2584863_2_fastqc.zip
-caution: filename not matched:  SRR2584866_1_fastqc.zip
-caution: filename not matched:  SRR2584866_2_fastqc.zip
-caution: filename not matched:  SRR2589044_1_fastqc.zip
-caution: filename not matched:  SRR2589044_2_fastqc.zip
+caution: filename not matched:  sub07_fastqc.zip
+caution: filename not matched:  sub08_fastqc.zip
+caution: filename not matched:  sub21_fastqc.zip
+caution: filename not matched:  sub22_fastqc.zip
+caution: filename not matched:  sub24_fastqc.zip
 ~~~
 {: .output}
 
@@ -281,37 +276,37 @@ In this example, the input is six filenames (one filename for each of our `.zip`
 Each time the loop iterates, it will assign a file name to the variable `filename`
 and run the `unzip` command.
 The first time through the loop,
-`$filename` is `SRR2584863_1_fastqc.zip`. 
-The interpreter runs the command `unzip` on `SRR2584863_1_fastqc.zip`.
+`$filename` is `sub06_fastqc.zip`. 
+The interpreter runs the command `unzip` on `sub06_fastqc.zip`.
 For the second iteration, `$filename` becomes 
-`SRR2584863_2_fastqc.zip`. This time, the shell runs `unzip` on `SRR2584863_2_fastqc.zip`.
+`Ssub07_fastqc.zip`. This time, the shell runs `unzip` on `sun07_fastqc.zip`.
 It then repeats this process for the four other `.zip` files in our directory.
 
 
 When we run our `for` loop, you will see output that starts like this:
 
 ~~~
-Archive:  SRR2589044_2_fastqc.zip
-   creating: SRR2589044_2_fastqc/
-   creating: SRR2589044_2_fastqc/Icons/
-   creating: SRR2589044_2_fastqc/Images/
-  inflating: SRR2589044_2_fastqc/Icons/fastqc_icon.png  
-  inflating: SRR2589044_2_fastqc/Icons/warning.png  
-  inflating: SRR2589044_2_fastqc/Icons/error.png  
-  inflating: SRR2589044_2_fastqc/Icons/tick.png  
-  inflating: SRR2589044_2_fastqc/summary.txt  
-  inflating: SRR2589044_2_fastqc/Images/per_base_quality.png  
-  inflating: SRR2589044_2_fastqc/Images/per_tile_quality.png  
-  inflating: SRR2589044_2_fastqc/Images/per_sequence_quality.png  
-  inflating: SRR2589044_2_fastqc/Images/per_base_sequence_content.png  
-  inflating: SRR2589044_2_fastqc/Images/per_sequence_gc_content.png  
-  inflating: SRR2589044_2_fastqc/Images/per_base_n_content.png  
-  inflating: SRR2589044_2_fastqc/Images/sequence_length_distribution.png  
-  inflating: SRR2589044_2_fastqc/Images/duplication_levels.png  
-  inflating: SRR2589044_2_fastqc/Images/adapter_content.png  
-  inflating: SRR2589044_2_fastqc/fastqc_report.html  
-  inflating: SRR2589044_2_fastqc/fastqc_data.txt  
-  inflating: SRR2589044_2_fastqc/fastqc.fo  
+Archive:  sub06_fastqc.zip
+   creating: sub06_fastqc/
+   creating: sub06_fastqc/Icons/
+   creating: sub06_2_fastqc/Images/
+  inflating: sub06_2_fastqc/Icons/fastqc_icon.png  
+  inflating: sub06_2_fastqc/Icons/warning.png  
+  inflating: sub06_2_fastqc/Icons/error.png  
+  inflating: sub06_2_fastqc/Icons/tick.png  
+  inflating: sub06_2_fastqc/summary.txt  
+  inflating: sub06_2_fastqc/Images/per_base_quality.png  
+  inflating: sub06_2_fastqc/Images/per_tile_quality.png  
+  inflating: sub06_2_fastqc/Images/per_sequence_quality.png  
+  inflating: sub06_2_fastqc/Images/per_base_sequence_content.png  
+  inflating: sub06_2_fastqc/Images/per_sequence_gc_content.png  
+  inflating: sub06_fastqc/Images/per_base_n_content.png  
+  inflating: sub06_fastqc/Images/sequence_length_distribution.png  
+  inflating: sub06_fastqc/Images/duplication_levels.png  
+  inflating: sub06_fastqc/Images/adapter_content.png  
+  inflating: sub06_fastqc/fastqc_report.html  
+  inflating: sub06_fastqc/fastqc_data.txt  
+  inflating: sub06_fastqc/fastqc.fo  
 ~~~
 {: .output}
 
@@ -489,14 +484,45 @@ $ cd ~/RNAseq070319/rawReads/
 ~~~
 {: .bash}
 
+
+
+The trimming and quality filtering will be done with trimmomatic.
+In the programm the following arguments can be used.
+
+| step   | meaning |
+| ------- | ---------- |
+| `SE` or `PE` | Reads are single end or paired end. |
+| `ILLUMINACLIP` | Perform adapter removal |
+| `SLIDINGWINDOW` | Perform sliding window trimming, cutting once the average quality within the window falls below a threshold. |
+| `LEADING`  | Cut bases off the start of a read, if below a threshold quality.  |
+|  `TRAILING` |  Cut bases off the end of a read, if below a threshold quality. |
+| `CROP`  |  Cut the read to a specified length. |
+|  `HEADCROP` |  Cut the specified number of bases from the start of the read. |
+| `MINLEN`  |  Drop an entire read if it is below a specified length. |
+|  `TOPHRED33` | Convert quality scores to Phred-33.  |
+|  `TOPHRED64` |  Convert quality scores to Phred-64. |
+
+
+To run this on a single sample it looks something like this
+~~~
+trimmomatic SE -phred33 -threads 2 sub06.fastq ../trimmed/sub06_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+~~~
+{: .bash}
+
+
+Of cource we don't want to do this for all the reads seperately so lets create a loop through all the fastq files.
+
 When doing the fastqc only input files needed to be specified. In this case both the input and a matching output filenames need to be given.
 this can be done with the help of 'basename'
+
 
 ~~~
 $ for fastq in *.fastq
 do
  echo inputfile $fastq
- echo outputfile "$(basename $fastq .fastq)"_qc.fq
+ base="$(basename $fastq .fastq)"_qc.fq
+ echo outputfile $base
+ echo
 done
 ~~~
 {: .bash}
@@ -506,26 +532,32 @@ This be be producing the following list
 ~~~
 inputfile sub06.fastq
 outputfile sub06_qc.fq
+
 inputfile sub07.fastq
 outputfile sub07_qc.fq
+
 inputfile sub08.fastq
 outputfile sub08_qc.fq
+
 inputfile sub21.fastq
 outputfile sub21_qc.fq
+
 inputfile sub23.fastq
 outputfile sub23_qc.fq
+
 inputfile sub24.fastq
 outputfile sub24_qc.fq
 ~~~
 {: .output}
 
-Next we can start writing the trimmomatic command
+Next we can start writing the trimmomatic loop.
 Again starting with a dry run with echo.
 
 ~~~
 $ for fastq in *.fastq
 do
-    echo trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/"$(basename "$fastq" .fastq)"_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+  outputFile="$(basename $fastq .fastq)"_qc.fq
+  echo trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/$outputFile ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3     SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
 done
 ~~~
 {: .bash}

@@ -21,7 +21,7 @@ The alignment process consists of two steps:
 Our first step is to index the reference genome for use by hisat2. Indexing allows the aligner to quickly find potential alignment sites for query sequences in a genome, which saves time during alignment. Indexing the reference only has to be run once. The only reason you would want to create a new index is if you are working with a different reference genome or you are using a different tool for alignment.
 
 ~~~
-$ cd ~/RNAseqWorkshop/general
+$ cd ~/RNAseq070319/general
 
 $ hisat2-build -p 5 ath.fas ath --quiet
 
@@ -71,22 +71,37 @@ creating the aligtnment (bam-files) is done in two steps. first the aligning it 
 First of course we will need to create a directory to output the alignment files 
 
 ~~~
-$ cd ~/RNAseqWorkshop/
+$ cd ~/RNAseq070319/
 
 $ mkdir mapped
 ~~~
 {: .bash}
 
-Next we have to enter the 'trimmed' directory, and loop through the fq files and get them aliugned/mapped to the indexed genome.
+
+Running hisat2 to align ( or map ) the reads and pipe the result through samtools view to remove the non-mapping reads.
+
+~~~
+$ cd ~/RNAseq070319/trimmed/
+
+$ for filename in *.fq
+ do
+    hisat2  -p 2 —dta -x ../general/ath -U sub06qc.fq | samtools view -Sb -F 4 -o ../mapped/sub06_qc.bam
+ done
+~~~
+{: .bash}
+
+
+Next we want to make a loop to do all the files
 
 It's good again to first start with a 'dry' run with the use of echo
 
 ~~~
-$ cd ~/RNAseqWorkshop/trimmed/
+$ cd ~/RNAseq070319/trimmed/
 
 $For filename in *.fq
  do
-    echo hisat2  -p 2 —dta -x ../general/ath -U filename | samtools view -Sb -F 4 -o ../mapped/"$(basename "$infile" .fq)”.bam
+   outfile="$(basename "$infile" .fq)”.bam
+   echo hisat2 -p 2 —dta -x ../general/ath -U filename | samtools view -Sb -F 4 -o ../mapped/$outfile
  done
 ~~~
 {: .bash}
@@ -99,21 +114,17 @@ $For filename in *.fq
     hisat2  -p 2 —dta -x ../general/ath -U filename | samtools view -Sb -F 4 -o ../mapped/"$(basename "$infile" .fq)”.bam
  done
 ~~~
+{: .bash}
 
-
-
+When running the hisat2 | samtools view, you will see output something like this:
 
 ~~~
-[M::bwa_idx_load_from_disk] read 0 ALT contigs
-[M::process] read 77446 sequences (10000033 bp)...
-[M::process] read 77296 sequences (10000182 bp)...
-[M::mem_pestat] # candidate unique pairs for (FF, FR, RF, RR): (48, 36728, 21, 61)
-[M::mem_pestat] analyzing insert size distribution for orientation FF...
-[M::mem_pestat] (25, 50, 75) percentile: (420, 660, 1774)
-[M::mem_pestat] low and high boundaries for computing mean and std.dev: (1, 4482)
-[M::mem_pestat] mean and std.dev: (784.68, 700.87)
-[M::mem_pestat] low and high boundaries for proper pairs: (1, 5836)
-[M::mem_pestat] analyzing insert size distribution for orientation FR...
+output of hisat2
+
+
+
+
+
 ~~~
 {: .output}
 
@@ -136,3 +147,67 @@ displayed below with the different fields highlighted.
 
 
 ![sam_bam2](../img/sam_bam3.png)
+
+
+
+### Creating the counts file
+
+For downstream application for each of the samples the number of reads that maps within a gene has to be determent.
+Featurecounts from the subread package can do this. 
+
+
+~~~
+$ cd ~/RNAseqWorkshop/mapped
+
+$ featureCounts -O -t exon -a ../general/annotation.all_transcripts.exon_features.ath.gff3 -o counts.txt *.bam
+~~~
+{: .bash}
+
+
+The file produced by featureCounts is a tab-delimited file.
+
+For the ideal shiny that we will be using for the downstream analysis we need to make some adjustments.
+
+the first line of the file containing the command used to run featureCounts, needs to be removed.(sill in the mapped directory)
+
+~~~
+$ awk '{if (NR!=1){print}} counts.txt > countsNew.txt
+~~~
+{: .bash}
+
+
+last we need to remove some columns that contain info on the gene (chromosome, startingposition, finalposition, length)
+
+~~~
+$ cut -f2,3,4,5,6 --complement countsNew.txt > countsFinal.txt
+~~~
+{: .bash}
+
+
+Now you should have a counts file (tab-delimited) 
+
+~~~
+$ head countsNew.txt
+~~~
+{: .bash}
+
+~~~
+Geneid  sub06_qc.bam    sub07_qc.bam    sub08_qc.bam    sub21_qc.bam    sub23_qc.bam    sub24_qc.bam
+AT1G01010       0       0       6       6       3       10
+AT1G01020       2       4       3       1       2       1
+AT1G03987       0       0       0       0       0       0
+AT1G01030       0       0       0       0       2       1
+AT1G03993       0       0       0       0       0       0
+AT1G01040       17      17      22      3       3       4
+AT1G01046       0       0       0       0       0       0
+ath-miR838      0       0       0       0       0       0
+AT1G01050       16      23      15      21      22      30
+AT1G03997       0       0       0       0       0       0
+AT1G01060       0       0       1       0       0       2
+AT1G01070       0       1       2       1       2       4
+AT1G04003       0       0       0       0       0       0
+AT1G01080       51      28      26      25      25      21
+AT1G01090       108     90      103     30      46      32
+...
+~~~
+{: .output}
