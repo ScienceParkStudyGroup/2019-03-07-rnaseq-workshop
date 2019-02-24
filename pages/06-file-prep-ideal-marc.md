@@ -12,8 +12,43 @@ keypoints:
 - "Use the `Data Setup` panel to load the `counts` and `design` files."
 ---
 ## Outline
-1. Explanation of the `counts.tsv` and the `design.tsv` files
-2. Generation a `DESeqDataSet` data object in R/Shiny
+1. Description of the `counts.tsv` and the `design.tsv` files
+2. Parsing (= clean-up) of the `counts.txt` and of the `design.tsv` files.
+2. Generation a `DESeqDataSet` data object in the __ideal__ online Shiny application.
 
-## Counts and design files
-To use the `ideal`
+### Description of the counts file
+The __featureCounts__ program used read alignment and annotation information to compute counting values for each of the annotation gene in the genome. That information is stored in the `counts.tsv` file.  
+This file is a tabulated file (columns are separated by a tabulation).     
+
+
+We can see that the first line is a comment line:
+` # Program:featureCounts v1.6.3; Command:"featureCounts" "-t" "exon" "-a" "/home/tbliek/RNAseqWorkshop/genome/annotation.all_transcripts.exon_features.ath.gff3" "-o" "counts.txt" "sub06_qc.bam" "sub07_qc.bam" "sub08_qc.bam" "sub21_qc.bam" "sub23_qc.bam" "sub24_qc.bam" ` that we need to remove.
+
+This is how the first lines look like:   
+
+| Geneid    | Chr                           | Start                         | End                           | Strand      | Length | sub06_qc.bam | sub07_qc.bam | sub08_qc.bam | sub21_qc.bam | sub23_qc.bam | sub24_qc.bam |
+|-----------|-------------------------------|-------------------------------|-------------------------------|-------------|--------|--------------|--------------|--------------|--------------|--------------|--------------|
+| AT1G01010 | Chr1;Chr1;Chr1;Chr1;Chr1;Chr1 | 3631;3996;4486;4706;5174;5439 | 3913;4276;4605;5095;5326;5899 | +;+;+;+;+;+ | 1688   | 0            | 0            | 6            | 6            | 3            | 10           |
+| AT1G01020 |  Chr1;Chr1;.... n times       |                               |                               |             |        | 2            | 4            | 3            | 1            | 2            | 1            |
+| AT1G03987 | ...                           |                               |                               |             |        |              |              |              |              |              |              |
+| ...       | ...                           | ...                           | ...                           | ...         | ...    | ...          | ...          | ...          | ...          | ...          | ...          |
+
+
+
+
+We need to process that file so that it looks like:  
+
+| Geneid    | sub06_qc.bam | sub07_qc.bam | sub08_qc.bam | sub21_qc.bam | sub23_qc.bam | sub24_qc.bam |
+|-----------|--------------|--------------|--------------|--------------|--------------|--------------|
+| AT1G01010 | 0            | 0            | 6            | 6            | 3            | 10           |
+| AT1G01020 | 2            | 4            | 3            | 1            | 2            | 1            |
+| AT1G03987 |              |              |              |              |              |              |
+| ...       | ...          | ...          | ...          | ...          | ...          | ...          |
+
+
+For that, we are going to use the __awk__ language that can be run from the Shell directly. Then we will use a basic program called __cut__ that is also executable from the Shell command-line too.   
+__Steps__:  
+1.
+2. Then remove unnecessary columns: `cut -f2,3,4,5,6 --complement counts.parsed.txt > counts.final.txt`
+
+### Design file
