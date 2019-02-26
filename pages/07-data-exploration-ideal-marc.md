@@ -1,0 +1,70 @@
+---
+title: "Exploring RNA-Seq results interactively with ideal"
+teaching: 45
+exercises: 0
+questions:
+- "How can I analyse the counts obtained from the DESeq2 analysis?"
+objectives:
+- "Understand the model used by DESeq2 to compute differential expression"
+- "Understand the different units for counts (TPM etc.)
+- "Correlate samples based on counts."
+- "Understand the experimental factor from which to compute differential expression"
+keypoints:
+- "fitted "
+- "Raw counts, normalized counts, TPM "
+---
+# Data exploration and analysis using the ideal
+For each panel, you can select the "Click me for a quick tour of the section"
+![Help button](../images/help-button.png "help button") 
+
+
+## Data setup
+<- add picture of Data setup panel ->    
+to do: explain the diagnostic plot
+
+## Counts overview
+<- add picture of Counts overview panel ->  
+### Data scale
+__Data scale in the table__: here you can change the units of the counts. Try different ones:
+- Counts (raw)
+- Counts (normalized)
+- Log10 (pseudocount of 1 added)
+
+__Question:__ what is the unit difference between raw and normalized counts? Any idea why?
+
+### Basic summary
+In the __Basic summary__ subsection, you can see a summary of the count data.   
+Try to change the __"Threshold on the row sums of the counts"__ value from 0 to some other bigger number.
+
+### Sample correlations
+Here you can visualise the correlation between your samples.
+
+## Extract results
+<- add picture of Extract Results panel ->
+
+### Select the experimental factor
+Since we have only one experimental factor that is quite easy: select the "condition" factor that contains the _drought_ and _control_ levels.
+
+__Question:__ what should you   
+Then select the numerator (_drought_) and denominator (control).
+
+### Result table
+
+Explanation of the results:
+> The first column, baseMean, is a just the average of the normalized count values, divided by the size factors, taken over all samples in the DESeqDataSet. The remaining four columns refer to a specific contrast, namely the comparison of the trt level over the untrt level for the factor variable dex. We will find out below how to obtain other contrasts.
+
+### Diagnostic plots
+- p-value histogram
+- stratified p-value histogram
+- log2 fold change histogram
+
+## Summary Plots
+- MA plot: mean of normalized counts _versus_ log fold change
+- Zoom in a section of the MA plot + select a gene to display the boxplot
+- Volcano plot: log2 Fold Change _versus_ -log10(pvalue)  
+- Heatmap: built from the region you have selected in the MA plot
+
+__Exercise__: in the MA plot, zoom on a region with nonDE genes (black). Look at the heatmap. Redo this with a region with DE genes (red). What can you say about the clustered heatmap?
+
+## Gene of interest
+Here you can look for your favorite gene of interest.      
