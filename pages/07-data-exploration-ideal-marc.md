@@ -15,7 +15,7 @@ keypoints:
 ---
 # Data exploration and analysis using the ideal
 For each panel, you can select the "Click me for a quick tour of the section"
-![Help button](../images/help-button.png "help button") 
+![Help button](../images/help-button.png) 
 
 
 ## Data setup
