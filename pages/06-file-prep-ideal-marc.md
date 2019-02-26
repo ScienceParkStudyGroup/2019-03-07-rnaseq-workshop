@@ -11,13 +11,19 @@ objectives:
 keypoints:
 - "Use the `Data Setup` panel to load the `counts` and `design` files."
 ---
-## Outline
+# Outline
 1. Description of the `counts.tsv` and the `design.tsv` files
 2. Parsing (= clean-up) of the `counts.txt` and of the `design.tsv` files.
 2. Generation a `DESeqDataSet` data object in the __ideal__ online Shiny application.
 
-### Description of the counts file
-The __featureCounts__ program used read alignment and annotation information to compute counting values for each of the annotation gene in the genome. That information is stored in the `counts.tsv` file.  
+# Introduction to ideal and the input files
+## What is ideal?
+__ideal__ stands for: "Interactive Differential Expression AnaLysis". It is a Shiny online application that runs R code without having you to type a single line of code.   
+We will use it as it will help us to explore the output of our trimming+alignment+count steps.  
+We will need two files for ideal: a `counts.tsv` file and a `design.tsv` file.
+
+## Description of the counts file
+The __featureCounts__ program used read alignment and annotation information to compute counting values for each annotated gene. That information is stored in the `counts.tsv` file.    
 This file is a tabulated file (columns are separated by a tabulation).     
 
 #### Removing the first line
@@ -27,10 +33,10 @@ We need to remove that line because the `ideal` application won't be able to pro
 For that, we are going to use the __awk__ language that can be run from the Shell directly.
 
 __Removing the first line with awk:__ in the Shell, type the following command  
- `awk '{if (NR!=1){print}} counts.txt > counts.parsed.txt`  
+ `awk '{if (NR!=1){print}}' counts.tsv > counts.parsed.tsv`  
  Check that it did the trick `head counts.parsed.txt`. The comment line should be removed.
 
-#### Removing unnecessary columns (chr,strand,etc.)
+### Removing unnecessary columns (chr,strand,etc.)
 Now our file looks like:   
 
 | Geneid    | Chr                           | Start                         | End                           | Strand      | Length | sub06_qc.bam | sub07_qc.bam | sub08_qc.bam | sub21_qc.bam | sub23_qc.bam | sub24_qc.bam |
@@ -50,6 +56,37 @@ We need to remove a few columns so that the file looks like:
 | AT1G03987 |              |              |              |              |              |              |
 | ...       | ...          | ...          | ...          | ...          | ...          | ...          |
 
-__Removing a few columns with cut:__ in the Shell, type `cut -f2,3,4,5,6 --complement counts.parsed.txt > counts.final.txt`
+__Removing a few columns with cut:__ in the Shell, type `cut -f2,3,4,5,6 --complement counts.parsed.tsv > counts.parsed.cut.tsv`
 
-### Design file
+| command | description |
+| -------- | -------- |
+| cut | program name for cutting sections from each line (cut==keep in output)|
+| -f | specify the fields (columns) you want to cut |
+|--complement | since we want to remove columns 2 to 6, we use the complement option |  
+
+### Renaming samples to remove the "\_qc.bam"
+To have nice and short sample names ("sub06"), we will search and replace the "\_qc.bam" inside the entire file.    
+One nice simple tool to do that is _sed_ and the command is:  
+`sed 's/_qc.bam//g' counts.parsed.cut.tsv > counts.parsed.cut.renamed.tsv`  
+
+| command | description |
+| -------- | -------- |
+| sed | program name that stands for __s__tream __ed__itor__ |
+| s | s for substitute |
+| _qc_bam | the string we want to substitute |
+| // | this means that we want to replace it with an empty string |
+| g | this means that we want to do it globally for the whole file |
+
+A complete but understandable guide for sed is available [here](http://www.grymoire.com/Unix/Sed.html).
+
+Check that it worked: `head counts.parsed.cut.renamed.tsv`
+
+### Rename the file
+Finally, we are going to rename that file because the name is too long:
+`mv counts.parsed.renamed.tsv counts.final.tsv`
+
+## Design file
+The design file tells the relationship between samples and experimental conditions.
+
+| | sample | condition |
+| | sub07_qc | |
