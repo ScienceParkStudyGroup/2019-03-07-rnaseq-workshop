@@ -105,3 +105,29 @@ The design file tells the relationship between samples and experimental conditio
 | sub24 | drought |  
 
 This file is in the right format for __ideal__. No need to do anything on this file.
+
+# Navigate to a public instance of the ideal application
+
+## Public online instances
+:de: at the Institute of Medical Biostatistics, Epidemiology and Informatics (IMBEI) in Mainz: http://shiny.imbei.uni-mainz.de:3838/ideal/
+
+:computer: using the installed instance of __ideal__ on the genseq cluster: http://genseq-h0.science.uva.nl/shiny/ideal/
+
+Warning:
+<p style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">Warning: it might be that the analysis takes too much time on both public instances due to everybody trying to access it at the same time.<br>If this is the case, you can try to start RStudio and install it locally.</p>
+
+## Local installation in RStudio
+
+### Installation
+Run these commands in RStudio:  
+```
+if (!requireNamespace("BiocManager", quietly=TRUE))
+    install.packages("BiocManager")
+BiocManager::install("ideal")
+```
+
+### Load the library and load files
+- First, load the library by typing `library(ideal)` in the RStudio interactive console.   
+- Then, start ideal by typing `ideal` in the RStudio console.
+
+You can then follow the lesson as the rest of the class.
