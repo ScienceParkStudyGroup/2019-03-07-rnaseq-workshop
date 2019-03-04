@@ -11,6 +11,7 @@ keypoints:
 - "sed, awk and cut commands"
 - "counts and design files for ideal."
 ---
+
 # Outline
 1. The __ideal__ application for rnaseq analysis.
 2. Description of the `counts.tsv` file.
@@ -19,7 +20,7 @@ keypoints:
 
 # What is ideal?
 __ideal__ stands for: "Interactive Differential Expression AnaLysis". It is a Shiny online application that runs R code without having you to type a single line of code.       
-![ideal](../images/ideal-presentation.png)  
+![](../images/ideal-presentation.png)  
 
 We will use it as it will help us to explore the output of our trimming+alignment+count steps.  
 We will need two files for ideal: a `counts.tsv` file and a `design.tsv` file.
