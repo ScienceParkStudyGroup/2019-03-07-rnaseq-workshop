@@ -5,23 +5,24 @@ exercises: 0
 questions:
 - "How can I analyse the counts obtained from the DESeq2 analysis?"
 objectives:
-- "Understand what is a Shiny application."
-- "Load the counts and experimental design files into ideal."
-- "Understand the dds class from DESeq."
+- "Understand what is the content of the counts and design files."
+- "Be able to transform the counts file into a desired format using the Shell."
 keypoints:
-- "Use the `Data Setup` panel to load the `counts` and `design` files."
+- "sed, awk and cut commands"
+- "counts and design files for ideal."
 ---
 # Outline
-1. Description of the `counts.tsv` and the `design.tsv` files
-2. Parsing (= clean-up) of the `counts.txt` and of the `design.tsv` files.
-2. Generation a `DESeqDataSet` data object in the __ideal__ online Shiny application.
+1. The __ideal__ application for rnaseq analysis.
+2. Description of the `counts.tsv` file.
+3. Parsing (= transformation) of the `counts.tsv` file.
+4. Description of the `design.tsv` file. 
 
-# Introduction to ideal and the input files
-## What is ideal?
+# What is ideal?
 __ideal__ stands for: "Interactive Differential Expression AnaLysis". It is a Shiny online application that runs R code without having you to type a single line of code.   
 We will use it as it will help us to explore the output of our trimming+alignment+count steps.  
 We will need two files for ideal: a `counts.tsv` file and a `design.tsv` file.
 
+# Input files for ideal
 ## Description of the counts file
 The __featureCounts__ program used read alignment and annotation information to compute counting values for each annotated gene. That information is stored in the `counts.tsv` file.    
 This file is a tabulated file (columns are separated by a tabulation).     
@@ -32,8 +33,9 @@ We can see that the first line is a comment line:
 We need to remove that line because the `ideal` application won't be able to process it.  
 For that, we are going to use the __awk__ language that can be run from the Shell directly.
 
-__Removing the first line with awk:__ in the Shell, type the following command  
- `awk '{if (NR!=1){print}}' counts.tsv > counts.parsed.tsv`  
+__Removing the first line with awk:__ in the Shell, type the following command:    
+ `awk '{if (NR!=1){print}}' counts.tsv > counts.parsed.tsv`
+
  Check that it did the trick `head counts.parsed.txt`. The comment line should be removed.
 
 ### Removing unnecessary columns (chr,strand,etc.)
@@ -82,11 +84,19 @@ A complete but understandable guide for sed is available [here](http://www.grymo
 Check that it worked: `head counts.parsed.cut.renamed.tsv`
 
 ### Rename the file
-Finally, we are going to rename that file because the name is too long:
+Finally, we are going to rename that file because the name is too long. In the Shell, type:  
 `mv counts.parsed.renamed.tsv counts.final.tsv`
 
 ## Design file
 The design file tells the relationship between samples and experimental conditions.
 
-| | sample | condition |
-| | sub07_qc | |
+| SampleName | condition |
+|------------|-----------|
+| sub06 | control |
+| sub07 | control |
+| sub08 | control |
+| sub21 | drought |
+| sub23 | drought |
+| sub24 | drought |  
+
+This file is in the right format for __ideal__. No need to do anything on this file.
