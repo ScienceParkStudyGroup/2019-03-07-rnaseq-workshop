@@ -81,7 +81,7 @@ Next, we want to extract the differential expression analysis results. We can do
 
 ### Select the experimental factor
 Since we have only one experimental factor that is quite easy: select the "condition" factor that contains the _drought_ and _control_ levels.
-To calculate a log fold change, select the numerator (_drought_) and denominator (_control_).  
+To calculate a log fold change, select the numerator (_drought_) and denominator (_control_).    
 ![xp](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/experimental-factor.png)   
 
 
@@ -120,18 +120,26 @@ The first interesting plot is the p-value histogram. It looks really good becaus
 ![pvalue distribution](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/pvalues_distribution.png)     
 
 The second interesting diagnostic plot is the stratified p-value histogram. You can see that expression level has a consequence for calling differential genes.
-![pvalue stratified distribution](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/pvalues_distribution_stratified)     
+![pvalue stratified distribution](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/pvalues_distribution_stratified.png)     
 
 The last but not least diagnostic plot that is interesting is the log2 fold change histogram. Since most genes should not be differential between your conditions, the log2 fold change should be centered around zero and looks like a Guaussian law.
-![pvalue stratified distribution](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/log2fc_histogram)     
+![pvalue stratified distribution](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/log2fc_histogram.png)     
 
 ## Summary Plots
-- MA plot: mean of normalized counts _versus_ log fold change
-- Zoom in a section of the MA plot + select a gene to display the boxplot
-- Volcano plot: log2 Fold Change _versus_ -log10(pvalue)  
-- Heatmap: built from the region you have selected in the MA plot
+Let's now look at the __Summary Plots__ section: ![summary plots](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/summary-plots.png)     
+We'll explain it as we go through:  
+
+### MA plot: mean of normalized counts _versus_ log fold change
+From the [DESeq2 documentation](http://master.bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html#ma-plot):
+> An MA-plot (Dudoit et al. 2002) provides a useful overview for the distribution of the estimated coefficients in the model, e.g. the comparisons of interest, across all genes. On the y-axis, the “M” stands for “minus” – subtraction of log values is equivalent to the log of the ratio – and on the x-axis, the “A” stands for “average”. You may hear this plot also referred to as a mean-difference plot, or a Bland-Altman plot.
+
+2. Zoom in a section of the MA plot + select a gene to display the boxplot
+3. Volcano plot: log2 Fold Change _versus_ -log10(pvalue)  
+4. Heatmap: built from the region you have selected in the MA plot
+
+
 
 __Exercise__: in the MA plot, zoom on a region with nonDE genes (black). Look at the heatmap. Redo this with a region with DE genes (red). What can you say about the clustered heatmap?
 
-## Gene of interest
+## Gene of interest section
 Here you can look for your favorite gene of interest.      
