@@ -45,11 +45,18 @@ Finally, we compute a standard differential expression analysis by running the `
 
 Click on `Run DESeq`:  
 ![deseq](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/run-deseq.png)    
+You can see a short overview of the analysis. In particular, how many genes have non-zero values (= are detected).   
+Moreover, you can see the number of genes that have a log fold change (LFC) superior or inferior to zero (up-regulated or down-regulated).
+
 
 ## Counts overview
-<- add picture of Counts overview panel ->  
+Let's move on and have a quick look at the counts. Select the __Counts Overview__ panel: ![counts-overview](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/counts-overview.png)    
+
 ### Data scale
-__Data scale in the table__: here you can change the units of the counts. Try different ones:
+__Data scale in the table__: here you can change the units of the counts.
+![counts](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/counts-overview.png)      
+
+Try different ones:
 - Counts (raw)
 - Counts (normalized)
 - Log10 (pseudocount of 1 added)
@@ -57,20 +64,39 @@ __Data scale in the table__: here you can change the units of the counts. Try di
 __Question:__ what is the unit difference between raw and normalized counts? Any idea why?
 
 ### Basic summary
-In the __Basic summary__ subsection, you can see a summary of the count data.   
-Try to change the __"Threshold on the row sums of the counts"__ value from 0 to some other bigger number.
+In the __Basic summary__ subsection, you can see a summary of the count data.     
+![basic](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/basic-summary.png)   
+
+ Try to change the __"Threshold on the row sums of the counts"__ value from 0 to some other bigger number.
+
+ __Question__: select a few values from 10 to 10,000. What happens to the number of detected genes? What does it tell you about the underlying distribution of genes in terms of expression values?  
+
+ You can also filter on the column sums (on samples and not on genes).
+ The _dds_ object can then be updated to keep filtered genes.
 
 ### Sample correlations
 Here you can visualise the correlation between your samples.
 
 ## Extract results
-<- add picture of Extract Results panel ->
+Next, we want to extract the differential expression analysis results. We can do so by going to the __Extract Results__ panel: ![extract](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/extract-results.png)   
 
 ### Select the experimental factor
 Since we have only one experimental factor that is quite easy: select the "condition" factor that contains the _drought_ and _control_ levels.
 
-__Question:__ what should you   
-Then select the numerator (_drought_) and denominator (control).
+![extract](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/extract-results.png)   
+
+To calculate a log fold change, select the numerator (_drought_) and denominator (_control_).
+
+__Question__: what would mean a positive log fold change?
+
+### Select the False Discovery Rate
+For each gene, we are testing the _null hypothesis_, that is: "the gene of interest is not differentially regulated between my experimental conditions (i.e. drought and control)". Since we are testing this null hypothesis thousands of times, we will overestimate the number of false positives (type I error) and thus overestimate the number of differentially expressed genes if we don't make any corrections.  
+For instance, you have 10,000 genes being tested and you choose a p-value cutoff of 0.05 (5%). That means that you can say that a gene is differentially regulated with a type I error of 5% (in other words, a confidence of 95%).  
+But since you have 10,000 genes, that means that 10,000 genes x 5% = 500 genes will be false positives (called differential while they are not).   
+To reduce the number of false positives, we are going to control (but not eliminate) the number of false positives using a False Discovery Rate (corrected p-value).
+
+You can change the FDR value here: ![fdr](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/fdr.png)   
+
 
 ### Result table
 
