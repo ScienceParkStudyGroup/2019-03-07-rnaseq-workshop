@@ -9,8 +9,10 @@ objectives:
 - "Understand the different units for counts (TPM etc.)
 - "Correlate samples based on counts."
 - "Understand the experimental factor from which to compute differential expression"
+- ""
 keypoints:
-- "fitted "
+- "fi
+tted "
 - "Raw counts, normalized counts, TPM "
 ---
 
@@ -19,8 +21,9 @@ For each panel, you can select the following button to get help: <br/>
 ![Help button](../images/help-button.png)  
 
 ## Data setup
-![Data setup](../images/data-setup.png)  
-to do: explain the diagnostic plot
+We will first create a dds object ("DESeq object") that will contain all necessary information for further processing.   
+ Select the __Data Setup__ panel:  
+![Data setup](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/data_setup.png)    
 
 ## Counts overview
 <- add picture of Counts overview panel ->  
