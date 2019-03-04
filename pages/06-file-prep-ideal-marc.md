@@ -25,8 +25,6 @@ __ideal__ stands for: "Interactive Differential Expression AnaLysis". It is a Sh
 We will use it as it will help us to explore the output of our trimming+alignment+count steps.  
 We will need two files for ideal: a `counts.tsv` file and a `design.tsv` file.
 
-
-
 # Input files for ideal
 ## Description of the counts file
 The __featureCounts__ program used read alignment and annotation information to compute counting values for each annotated gene. That information is stored in the `counts.tsv` file.    
@@ -41,7 +39,9 @@ For that, we are going to use the __awk__ language that can be run from the Shel
 __Removing the first line with awk:__ in the Shell, type the following command:    
  `awk '{if (NR!=1){print}}' counts.tsv > counts.parsed.tsv`
 
- Check that it did the trick `head counts.parsed.txt`. The comment line should be removed.
+ Check that it did the trick: in the Shell, type:  
+ `head counts.parsed.txt`  
+ The comment line should be removed.
 
 ### Removing unnecessary columns (chr,strand,etc.)
 Now our file looks like:   
