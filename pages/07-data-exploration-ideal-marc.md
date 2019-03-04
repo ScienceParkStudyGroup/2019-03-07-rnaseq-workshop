@@ -9,10 +9,8 @@ objectives:
 - "Understand the different units for counts (TPM etc.)
 - "Correlate samples based on counts."
 - "Understand the experimental factor from which to compute differential expression"
-- ""
 keypoints:
-- "fi
-tted "
+- ""
 - "Raw counts, normalized counts, TPM "
 ---
 
@@ -50,18 +48,19 @@ Moreover, you can see the number of genes that have a log fold change (LFC) supe
 
 
 ## Counts overview
-Let's move on and have a quick look at the counts. Select the __Counts Overview__ panel: ![counts-overview](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/counts-overview.png)    
+Let's move on and have a quick look at the counts. Select the __Counts Overview__ panel: ![counts-overview](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/counts-overview.png)  
+
 
 ### Data scale
 __Data scale in the table__: here you can change the units of the counts.
-![counts](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/counts-overview.png)      
+![counts](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/data-scale.png)      
 
-Try different ones:
+Try different units:
 - Counts (raw)
 - Counts (normalized)
 - Log10 (pseudocount of 1 added)
 
-__Question:__ what is the unit difference between raw and normalized counts? Any idea why?
+__Question:__ why is the difference between raw and normalized counts?
 
 ### Basic summary
 In the __Basic summary__ subsection, you can see a summary of the count data.     
@@ -82,10 +81,9 @@ Next, we want to extract the differential expression analysis results. We can do
 
 ### Select the experimental factor
 Since we have only one experimental factor that is quite easy: select the "condition" factor that contains the _drought_ and _control_ levels.
+To calculate a log fold change, select the numerator (_drought_) and denominator (_control_).  
+![xp](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/experimental-factor.png)   
 
-![extract](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/extract-results.png)   
-
-To calculate a log fold change, select the numerator (_drought_) and denominator (_control_).
 
 __Question__: what would mean a positive log fold change?
 
@@ -100,30 +98,32 @@ To make a long story short, you can remember this:
 
 You can change the FDR value here: ![fdr](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/fdr.png)   
 
-Click on "Extract the results!" when ready.
+Click on "Extract the results!" ![extract the results](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/extract-results-button.png) when ready.
 
 ### Result table
-
-Explanation of the results:
-> The first column, baseMean, is a just the average of the normalized count values, divided by the size factors, taken over all samples in the DESeqDataSet. The remaining four columns refer to a specific contrast, namely the comparison of the drought level over the control level for the factor variable condition. We will find out below how to obtain other contrasts.
+Explanation of the result table:
 
 | column | description | example |
 |--------|-------------|---------|
 | unnamed | gene name | ATCG00470|
 | baseMean | average of the normalized count values divided by the size factors | 3038.11149196245 |
-| log2FoldChange | ... |...|
-| lfcSE | ... |...|
-| stat | ... |...|
-| pvalue | ... |...|
-| padj | ... |...|
-| symbol | ... |...|
-
+| log2FoldChange | log2 scaled fold change between drought and control (log2FC = log2(drought) - log2(control)) |3.66236695846517	|
+| lfcSE | Standard error estimate for the log2 fold change estimate. |0.290498413254083	|
+| stat | Statistical value associated (origin?) |-10.9229847880748	|
+| pvalue | the associated p-value |8.95051429777092e-28	|
+| padj | the p-value corrected using the false discovery rate |1.64403046621456e-24|
+| symbol | gene symbol (if an annotation is available) |-|
 
 
 ### Diagnostic plots
-- p-value histogram
-- stratified p-value histogram
-- log2 fold change histogram
+The first interesting plot is the p-value histogram. It looks really good because we have a high peak of genes with a highly significant p-value (left side). And the non-significant differential genes have p-values scattered between 0 and 1. For a deeper explanation see [this blog post](http://varianceexplained.org/statistics/interpreting-pvalue-histogram/).    
+![pvalue distribution](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/pvalues_distribution.png)     
+
+The second interesting diagnostic plot is the stratified p-value histogram. You can see that expression level has a consequence for calling differential genes.
+![pvalue stratified distribution](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/pvalues_distribution_stratified)     
+
+The last but not least diagnostic plot that is interesting is the log2 fold change histogram. Since most genes should not be differential between your conditions, the log2 fold change should be centered around zero and looks like a Guaussian law.
+![pvalue stratified distribution](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/log2fc_histogram)     
 
 ## Summary Plots
 - MA plot: mean of normalized counts _versus_ log fold change
