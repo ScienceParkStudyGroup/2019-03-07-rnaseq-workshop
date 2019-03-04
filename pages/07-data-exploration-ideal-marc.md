@@ -21,15 +21,17 @@ For each panel, you can select the following button to get help: <br/>
 ![Help button](../images/help-button.png)  
 
 ## Data setup
-We will first create a dds object ("DESeq object") that will contain all necessary information for further processing.   
+We will first create a _dds_ object ("DESeqDataSet object") that will contain all necessary information for further processing.   
  Select the __Data Setup__ panel: ![Data setup](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/data_setup.png)   
 
  Import the `counts.final.tsv` and the `design.tsv` files. Upon upload, you should have:  
- ![import](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/import-tables.png)     
+ ![import](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/import-tables.png)       
 
 You can take a look at how __ideal__ imported your counts.
 ![preview](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/count-design-preview.png)      
 
+Generate the _dds_ object by selecting the _condition_ for the experimental design. This will indicate that we want to compare the levels (_control_ and _drought_) of the _condition_ column from the `design.tsv`.
+![dds](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/generate-dds.png)  
 
 ## Counts overview
 <- add picture of Counts overview panel ->  
