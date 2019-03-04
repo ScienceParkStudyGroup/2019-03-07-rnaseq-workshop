@@ -95,13 +95,30 @@ For instance, you have 10,000 genes being tested and you choose a p-value cutoff
 But since you have 10,000 genes, that means that 10,000 genes x 5% = 500 genes will be false positives (called differential while they are not).   
 To reduce the number of false positives, we are going to control (but not eliminate) the number of false positives using a False Discovery Rate (corrected p-value).
 
+To make a long story short, you can remember this:
+> if you repeat a test enough times, you’re going to find an effect…but that effect may not actually exist.  
+
 You can change the FDR value here: ![fdr](https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/fdr.png)   
 
+Click on "Extract the results!" when ready.
 
 ### Result table
 
 Explanation of the results:
-> The first column, baseMean, is a just the average of the normalized count values, divided by the size factors, taken over all samples in the DESeqDataSet. The remaining four columns refer to a specific contrast, namely the comparison of the trt level over the untrt level for the factor variable dex. We will find out below how to obtain other contrasts.
+> The first column, baseMean, is a just the average of the normalized count values, divided by the size factors, taken over all samples in the DESeqDataSet. The remaining four columns refer to a specific contrast, namely the comparison of the drought level over the control level for the factor variable condition. We will find out below how to obtain other contrasts.
+
+| column | description | example |
+|--------|-------------|---------|
+| unnamed | gene name | ATCG00470|
+| baseMean | average of the normalized count values divided by the size factors | 3038.11149196245 |
+| log2FoldChange | ... |...|
+| lfcSE | ... |...|
+| stat | ... |...|
+| pvalue | ... |...|
+| padj | ... |...|
+| symbol | ... |...|
+
+
 
 ### Diagnostic plots
 - p-value histogram

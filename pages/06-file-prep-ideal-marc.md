@@ -113,7 +113,7 @@ This file is in the right format for __ideal__. No need to do anything on this f
 
 :computer: using the installed instance of __ideal__ on the genseq cluster: http://genseq-h0.science.uva.nl/shiny/ideal/
 
-Warning:
+__Warning__:
 <p style="border:3px; border-style:solid; border-color:#FF0000; padding: 1em;">Warning: it might be that the analysis takes too much time on both public instances due to everybody trying to access it at the same time.<br>If this is the case, you can try to start RStudio and install it locally.</p>
 
 ## Local installation in RStudio
