@@ -3,7 +3,7 @@ title: "Exploring RNA-Seq results interactively with ideal"
 teaching: 45
 exercises: 0
 questions:
-- "How can I analyse the counts obtained from the DESeq2 analysis?"
+- "How can I analyze the counts obtained from the DESeq2 analysis?"
 objectives:
 - "Understand the model used by DESeq2 to compute differential expression"
 - "Understand the different units for counts (TPM etc.)
@@ -13,14 +13,13 @@ keypoints:
 - "fitted "
 - "Raw counts, normalized counts, TPM "
 ---
+
 # Data exploration and analysis using the ideal
 For each panel, you can select the following button to get help: <br/>
 ![Help button](../images/help-button.png)  
 
-
-
 ## Data setup
-<- add picture of Data setup panel ->    
+![Data setup](../images/data-setup.png)  
 to do: explain the diagnostic plot
 
 ## Counts overview

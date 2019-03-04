@@ -40,7 +40,7 @@ __Removing the first line with awk:__ in the Shell, type the following command:
  `awk '{if (NR!=1){print}}' counts.tsv > counts.parsed.tsv`
 
  Check that it did the trick: in the Shell, type:  
- `head counts.parsed.txt`  
+ `head counts.parsed.tsv`  
  The comment line should be removed.
 
 ### Removing unnecessary columns (chr,strand,etc.)
