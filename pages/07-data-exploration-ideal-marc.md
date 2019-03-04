@@ -6,13 +6,17 @@ questions:
 - "How can I analyze the counts obtained from the DESeq2 analysis?"
 objectives:
 - "Understand the model used by DESeq2 to compute differential expression"
-- "Understand the different units for counts (TPM etc.)
+- "Understand the different units for counts (TPM etc.)"
 - "Correlate samples based on counts."
 - "Understand the experimental factor from which to compute differential expression"
 keypoints:
-- ""
-- "Raw counts, normalized counts, TPM "
+- "Raw counts, normalized counts, TPM"
+- "p-value and false discovery rate"
+- "log fold change"
+- "MA plot, Volcanot plot"
 ---
+# Download files
+If you haven't managed to get the files, download them here:
 
 # Data exploration and analysis using the ideal
 For each panel, you can select the following button to get help: <br/>
@@ -137,6 +141,5 @@ __To do list__:
 - Zoom in a section of the MA plot + select a gene to display the boxplot
 - Volcano plot: log2 Fold Change _versus_ -log10(pvalue)  
 - Heatmap: built from the region you have selected in the MA plot
-
 
 __Exercise__: in the MA plot, zoom on a region with nonDE genes (black). Look at the heatmap. Redo this with a region with DE genes (red). What can you say about the clustered heatmap?
