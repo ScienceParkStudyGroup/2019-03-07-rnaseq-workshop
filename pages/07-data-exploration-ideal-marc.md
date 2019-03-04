@@ -133,13 +133,10 @@ We'll explain it as we go through:
 From the [DESeq2 documentation](http://master.bioconductor.org/packages/release/workflows/vignettes/rnaseqGene/inst/doc/rnaseqGene.html#ma-plot):
 > An MA-plot (Dudoit et al. 2002) provides a useful overview for the distribution of the estimated coefficients in the model, e.g. the comparisons of interest, across all genes. On the y-axis, the “M” stands for “minus” – subtraction of log values is equivalent to the log of the ratio – and on the x-axis, the “A” stands for “average”. You may hear this plot also referred to as a mean-difference plot, or a Bland-Altman plot.
 
-2. Zoom in a section of the MA plot + select a gene to display the boxplot
-3. Volcano plot: log2 Fold Change _versus_ -log10(pvalue)  
-4. Heatmap: built from the region you have selected in the MA plot
-
+__To do list__:
+- Zoom in a section of the MA plot + select a gene to display the boxplot
+- Volcano plot: log2 Fold Change _versus_ -log10(pvalue)  
+- Heatmap: built from the region you have selected in the MA plot
 
 
 __Exercise__: in the MA plot, zoom on a region with nonDE genes (black). Look at the heatmap. Redo this with a region with DE genes (red). What can you say about the clustered heatmap?
-
-## Gene of interest section
-Here you can look for your favorite gene of interest.      
