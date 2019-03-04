@@ -16,7 +16,7 @@ keypoints:
 - "MA plot, Volcanot plot"
 ---
 # Download files
-If you haven't managed to get the files, download them here:
+If you haven't managed to get the `counts.final.tsv` file, no worry! Just download it here: https://doi.org/10.5281/zenodo.2583083    
 
 # Data exploration and analysis using the ideal
 For each panel, you can select the following button to get help: <br/>
