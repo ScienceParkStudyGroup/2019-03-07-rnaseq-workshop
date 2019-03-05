@@ -85,7 +85,7 @@ $ cd ~/RNAseq070319/trimmed/
 
 $ for filename in *.fq
  do
-    hisat2  -p 2 —dta -x ../general/ath -U sub06qc.fq | samtools view -Sb -F 4 -o ../mapped/sub06_qc.bam
+    hisat2  -p 2 -x ../general/ath -U sub06qc.fq | samtools view -Sb -F 4 -o ../mapped/sub06_qc.bam
  done
 ~~~
 {: .bash}
@@ -159,7 +159,7 @@ Featurecounts from the subread package can do this.
 ~~~
 $ cd ~/RNAseqWorkshop/mapped
 
-$ featureCounts -O -t exon -a ../general/annotation.all_transcripts.exon_features.ath.gff3 -o counts.txt *.bam
+$ featureCounts -O -t mRNA -g ID -a ../general/annotation.all_transcripts.exon_features.ath.gff3 -o counts.txt *.bam
 ~~~
 {: .bash}
 
