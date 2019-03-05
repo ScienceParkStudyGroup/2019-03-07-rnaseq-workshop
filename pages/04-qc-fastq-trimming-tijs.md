@@ -1,5 +1,6 @@
 # Quality control and trimming
 
+<img src="https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/fix-episodes-tijs/images/RNAseqWorkflow.png" height="400" >
 
 
 ## Running FastQC  
@@ -187,17 +188,11 @@ Your computer will open each of the HTML files in your default web
 browser. Depending on your settings, this might be as six separate
 tabs in a single window or six separate browser windows.
 
-> ## Exercise
->
-> Discuss your results with a neighbor. Which sample(s) looks the best
-> in terms of per base sequence quality? Which sample(s) look the
-> worst?
->
->> ## Solution
->> All of the reads contain usable data, but the quality decreases toward
->> the end of the reads.
-> {: .solution}
-{: .challenge}
+## Exercise
+Discuss your results with a neighbor.
+- Which sample(s) look the best in terms of per base sequence quality?
+- Which sample(s) look the worst?
+
 
 ## Decoding the other FastQC outputs
 We've now looked at quite a few "Per base sequence quality" FastQC graphs, but there are nine other graphs that we haven't talked about! Below we have provided a brief overview of interpretations for each of these plots. It's important to keep in mind
@@ -394,79 +389,6 @@ it to `~/dc_workshop/docs`.
 ~~~
 $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
 ~~~
-
-
-> ## Exercise
->
-> Which samples failed at least one of FastQC's quality tests? What
-> test(s) did those samples fail?
->
->> ## Solution
->>
->> We can get the list of all failed tests using `grep`.
->>
->> ~~~
->> $ cd ~/dc_workshop/docs
->> $ grep FAIL fastqc_summaries.txt
->> ~~~
->>
->>
->> ~~~
->> FAIL    Per base sequence quality       SRR2584863_2.fastq.gz
->> FAIL    Per tile sequence quality       SRR2584863_2.fastq.gz
->> FAIL    Per base sequence content       SRR2584863_2.fastq.gz
->> FAIL    Per base sequence quality       SRR2584866_1.fastq.gz
->> FAIL    Per base sequence content       SRR2584866_1.fastq.gz
->> FAIL    Adapter Content SRR2584866_1.fastq.gz
->> FAIL    Adapter Content SRR2584866_2.fastq.gz
->> FAIL    Adapter Content SRR2589044_1.fastq.gz
->> FAIL    Per base sequence quality       SRR2589044_2.fastq.gz
->> FAIL    Per tile sequence quality       SRR2589044_2.fastq.gz
->> FAIL    Per base sequence content       SRR2589044_2.fastq.gz
->> FAIL    Adapter Content SRR2589044_2.fastq.gz
->> ~~~
->>
->>
-> {: .solution}
-{: .challenge}
-
-
-# Other notes  -- Optional
-
-> ## Quality Encodings Vary
->
-> Although we've used a particular quality encoding system to demonstrate interpretation of
-> read quality, different sequencing machines use different encoding systems. This means that,
-> depending on which sequencer you use to generate your data, a `#` may not be an indicator of
-> a poor quality base call.
->
-> This mainly relates to older Solexa/Illumina data,
-> but it's essential that you know which sequencing platform was
-> used to generate your data, so that you can tell your quality control program which encoding
-> to use. If you choose the wrong encoding, you run the risk of throwing away good reads or
-> (even worse) not throwing away bad reads!
-{: .callout}
-
-
-> ## Same Symbols, Different Meanings
->
-> Here we see `>` being used a shell prompt, whereas `>` is also
-> used to redirect output.
-> Similarly, `$` is used as a shell prompt, but, as we saw earlier,
-> it is also used to ask the shell to get the value of a variable.
->
-> If the *shell* prints `>` or `$` then it expects you to type something,
-> and the symbol is a prompt.
->
-> If *you* type `>` or `$` yourself, it is an instruction from you that
-> the shell to redirect output or get the value of a variable.
-{: .callout}
-
-
-
-
-
-
 
 
 # Trimming and filtering
