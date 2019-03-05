@@ -17,8 +17,8 @@ keypoints:
 - "Number of reads to collect"
 
 ---
-# RNA-Seq experimental design
+## RNA-Seq experimental design
 I will introduce some technical and methodological notions regarding mRNA-Seq in this [presentation](../presentations/rna-seq_design.pdf)
 
-# Credits
+## Credits
 This presentation was taken from the extensive RNA-Seq course given by the [Harvard Chan Bioinformatics Core](http://bioinformatics.sph.harvard.edu/).
