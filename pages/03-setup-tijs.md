@@ -13,16 +13,15 @@ keypoints:
 - "`for` loops let you perform the same set of operations on multiple files with a single command."
 ---
 
-# Bioinformatics workflows
+# Summary and outline
 
 When working with high-throughput sequencing data, the raw reads you get off of the sequencer will need to pass
 through a number of  different tools in order to generate your final desired output. The execution of this set of
 tools in a specified order is commonly referred to as a *workflow* or a *pipeline*.
 
-An example of the workflow we will be using for our variant calling analysis is provided below with a brief
-description of each step.
+An example of a typical mRNA-Seq workflow is provided below:
 
-![workflow](../images/RNAseqWorkflow.png)
+<img src="https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/fix-episodes-tijs/images/RNAseqWorkflow.png" height="400" >
 
 1. Quality control - Assessing quality using FastQC
 2. Quality control - Trimming and/or filtering reads (if necessary)
