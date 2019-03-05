@@ -1,7 +1,7 @@
 
 # Alignment to a reference genome
 
-![workflow_align](../images/RNAseqWorkflow.png)
+<img src="https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/fix-episodes-tijs/images/RNAseqWorkflow.png" height="200" >
 
 We perform read alignment or mapping to determine where in the genome our reads originated from. There are a number of tools to
 choose from and, while there is no gold standard, there are some tools that are better suited for particular NGS analyses. We will be
@@ -46,7 +46,7 @@ Settings:
 Total time for call to driver() for forward index: 00:01:09
 
 ~~~
-{: .output}
+
 
 
 The indexing should have produced 8 hisat2 index files (.ht2). Use the following command to see if they're really there.
@@ -60,7 +60,7 @@ result should be:
 ~~~
 ath.1.ht2  ath.2.ht2  ath.3.ht2  ath.4.ht2  ath.5.ht2  ath.6.ht2  ath.7.ht2  ath.8.ht2
 ~~~
-{: .output}
+
 
 
 
@@ -123,7 +123,7 @@ output of hisat2
 
 
 ~~~
-{: .output}
+
 
 
 #### SAM/BAM format
