@@ -1,10 +1,10 @@
 ---
-title: "Data Types and Type Conversion"
-teaching: 10
-exercises: 10
+title: "RNA-Seq analysis: post-sequencing steps"
+teaching: 30
+exercises: 0
 questions:
 - "Why would you do an RNA-Seq experiment?
--
+- "What are the need-to-know facts regarding RNA-Seq?"
 objectives:
 - "Recognize a fastq format"
 - "Distinguish good and bad base quality"
@@ -18,5 +18,5 @@ keypoints:
 - "alignment on a reference sequence"
 - "Counting: RPKM,FPKM,TPM,counts"
 ---
-# Introduction to RNA-Seq concepts
+## Introduction to RNA-Seq concepts
 The presentation of Ernest is [here](../presentations/Ernest.pdf)
