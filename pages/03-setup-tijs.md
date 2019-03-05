@@ -13,7 +13,7 @@ keypoints:
 - "`for` loops let you perform the same set of operations on multiple files with a single command."
 ---
 
-# Summary and outline
+# Setup
 
 When working with high-throughput sequencing data, the raw reads you get off of the sequencer will need to pass
 through a number of  different tools in order to generate your final desired output. The execution of this set of
@@ -35,20 +35,20 @@ makes this feasible. Standards ensure that data is stored in a way that is gener
 within the community. The tools that are used to analyze data at different stages of the workflow are therefore
 built under the assumption that the data will be provided in a specific format.  
 
-
 # Starting with Data
 
+## Description
 Often times, the first step in a bioinformatics workflow is getting the data you want to work with onto a computer where you can work with it. If you have sequenced your own data, the sequencing center will usually provide you with a link that you can use to download your data. Today we will be working with a dataset made available by Max van Hooren.
 
 We are studying a drought experiment containing 6 arabidopsis shoot samples. All grown 12 days on agar, 9 days on vermiculite with media. Then the drought group (21, 23, 24) got their media taken away, while the control group (06, 07, 08) kept their media for another 6 days after which the samples were harvested.
 
-From these samples RNA was sequenced (Ion-torrent)of wich you will be provided with a subset, 6 raw sequence files, containing 1.000.000 single-end reads each. Futher more you get the arabidopsis genome fasta file, an annotation file and the environment file ammong others , together in 1 zipped file.
+From these samples, mRNA were sequenced using the Proton Ion system ([RNA Biology & Applied Bioinformatics group@SILS](http://sils.uva.nl/content/research-groups/rna-biology--applied-bioinformatics/rna-biology--applied-bioinformatics.html)). 6 raw sequence files were randomly subsampled to contain 1.000.000 single-end reads each. Furthermore, you will get the Arabidopsis genome fasta file, an annotation file and the environment file among others altogether in one zipped file.
 
+## Download
 To download the data, run the commands below. It will take about 10 minutes to download the files.
 ~~~
 wget path and name of the zipped folder containing all the data
 ~~~
-
 
 The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. Let's unzip one of the files so that we can look at all the files.
 
@@ -57,7 +57,9 @@ $ gunzip datafolder.gz
 ~~~
 
 
-# Setting up the environment
+# Setting up the working environment
+
+## Installing the conda software and package manager
 
 The commands used for the analysis we will do are not known by basic bash. For this we will have to create and activate an environment in wich all the commands will run.
 
@@ -70,6 +72,7 @@ $ wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh
 $ bash Miniconda3-latest-Linux-x86_64.sh
 ~~~
 
+## Create and activate your environment
 
 Next with the use of conda and the environment file in the "general" folder we will create and activate the environment:
 ~~~
