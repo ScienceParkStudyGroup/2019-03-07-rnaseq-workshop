@@ -46,16 +46,16 @@ We are studying a drought experiment containing 6 arabidopsis shoot samples. All
 
 From these samples RNA was sequenced (Ion-torrent)of wich you will be provided with a subset, 6 raw sequence files, containing 1.000.000 single-end reads each. Futher more you get the arabidopsis genome fasta file, an annotation file and the environment file ammong others , together in 1 zipped file.
 
-To download the data, run the commands below. It will take about 10 minutes to download the files.
+To download the data, run the commands below. It will take about 5 minutes to download the files.
 ~~~
-wget path and name of the zipped folder containing all the data
+$ wget http://zenodo.org/record/2583921/files/RNAseq.tar.gz
 ~~~
 {: .bash}
 
 The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. Let's unzip one of the files so that we can look at all the files.
 
 ~~~
-$ gunzip datafolder.gz 
+$ tar -zxvf RNAseq.tar.gz
 ~~~
 {: .bash}
 
