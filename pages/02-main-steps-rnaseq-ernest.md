@@ -3,7 +3,7 @@ title: "RNA-Seq analysis: post-sequencing steps"
 teaching: 30
 exercises: 0
 questions:
-- "Why would you do an RNA-Seq experiment?
+- "Why would you do an RNA-Seq experiment?""
 - "What are the need-to-know facts regarding RNA-Seq?"
 objectives:
 - "Recognize a fastq format"
