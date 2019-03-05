@@ -11,14 +11,14 @@ $ cd ~/RNAseq070319
 
 $ mkdir fastqc
 ~~~
-{: .bash}
+
 
 Next we need to get to the directory thay actually contains the the fastq files.
 
 ~~~
 $ cd ~/RNAseq070319/rawReads
 ~~~
-{: .bash}
+
 
 
 Running fastqc uses the following command
@@ -26,7 +26,7 @@ Running fastqc uses the following command
 ~~~
 fastqc -o ../fastqc $filename
 ~~~
-{: .bash}
+
 
 Of course we don't want to do y=this for all the samples seperately so we can loop through the list of samples and run them all sequentially
 
@@ -38,7 +38,7 @@ $ for filename in *.fastq
     echo fastqc -o ../fastqc $filename
   done
 ~~~
-{: .bash}
+
 
 The echo command only prints the commands to the screen, and doesn't really run it.
 
@@ -60,7 +60,7 @@ $ for filename in *.fastq
     fastqc -o ../fastqc $filename
   done
 ~~~
-{: .bash}
+
 
 You will see an automatically updating output message telling you the
 progress of the analysis. It shoul look something like this:
@@ -96,7 +96,7 @@ But if all went right, the FastQC program will have created several new files wi
 $ cd ~/RNAseq070319/fastqc
 $ ls
 ~~~
-{: .bash}
+
 
 ~~~
 sub06_fastqc.html  sub07_fastqc.zip   sub21_fastqc.html  sub23_fastqc.zip
@@ -114,7 +114,7 @@ HTML files as a webpage:
 ~~~
 $ open sub06_fastqc.html
 ~~~
-{: .bash}
+
 
 However, if you try this on our genseq instance, you'll get an error:
 
@@ -140,14 +140,14 @@ top of your screen or the Cmd+t keyboard shortcut) and type:
 ~~~
 $ mkdir -p ~/Desktop/fastqc_html
 ~~~
-{: .bash}
+
 
 Now we can transfer our HTML files to our local computer using `scp`.
 
 ~~~
 $ scp tbliek@genseq-cn02.science.uva.nl:~/RNAseq070319/fastqc/*.html ~/Desktop/fastqc_html
 ~~~
-{: .bash}
+
 
 As a reminder, the first part
 of the command `tbliek@genseq-cn02.science.uva.nl` is
@@ -181,7 +181,7 @@ Now we can go to our new directory and open the HTML files.
 $ cd ~/Desktop/fastqc_html/
 $ open *.html
 ~~~
-{: .bash}
+
 
 Your computer will open each of the HTML files in your default web
 browser. Depending on your settings, this might be as six separate
@@ -224,7 +224,7 @@ our results subdirectory.
 $ cd ~/RNAseq070319/fastqc/
 $ ls
 ~~~
-{: .bash}
+
 
 ~~~
 sub06_fastqc.html  sub07_fastqc.zip   sub21_fastqc.html  sub23_fastqc.zip
@@ -242,7 +242,7 @@ wildcard.
 ~~~
 $ unzip *.zip
 ~~~
-{: .bash}
+
 
 ~~~
 Archive:  SRR2584863_1_fastqc.zip
@@ -270,7 +270,7 @@ $ for filename in *.zip
 > unzip $filename
 > done
 ~~~
-{: .bash}
+
 
 In this example, the input is six filenames (one filename for each of our `.zip` files).
 Each time the loop iterates, it will assign a file name to the variable `filename`
@@ -326,7 +326,7 @@ SRR2584863_2_fastqc       SRR2584866_2_fastqc       SRR2589044_2_fastqc
 SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
 SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
 ~~~
-{:. output}
+
 
 The `.html` files and the uncompressed `.zip` files are still present,
 but now we also have a new directory for each of our samples. We can
@@ -335,7 +335,7 @@ see for sure that it's a directory if we use the `-F` flag for `ls`.
 ~~~
 $ ls -F
 ~~~
-{: .bash}
+
 
 ~~~
 SRR2584863_1_fastqc/      SRR2584866_1_fastqc/      SRR2589044_1_fastqc/
@@ -352,7 +352,7 @@ Let's see what files are present within one of these output directories.
 ~~~
 $ ls -F SRR2584863_1_fastqc/
 ~~~
-{: .bash}
+
 
 ~~~
 fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
@@ -364,7 +364,7 @@ Use `less` to preview the `summary.txt` file for this sample.
 ~~~
 $ less SRR2584863_1_fastqc/summary.txt
 ~~~
-{: .bash}
+
 
 ~~~
 PASS    Basic Statistics        SRR2584863_1.fastq
@@ -394,7 +394,7 @@ it to `~/dc_workshop/docs`.
 ~~~
 $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
 ~~~
-{: .bash}
+
 
 > ## Exercise
 >
@@ -409,7 +409,7 @@ $ cat */summary.txt > ~/dc_workshop/docs/fastqc_summaries.txt
 >> $ cd ~/dc_workshop/docs
 >> $ grep FAIL fastqc_summaries.txt
 >> ~~~
->> {: .bash}
+>>
 >>
 >> ~~~
 >> FAIL    Per base sequence quality       SRR2584863_2.fastq.gz
@@ -482,7 +482,7 @@ $ cd ~/RNAseq070319/
 $ mkdir trimmed
 $ cd ~/RNAseq070319/rawReads/
 ~~~
-{: .bash}
+
 
 
 
@@ -507,7 +507,7 @@ To run this on a single sample it looks something like this
 ~~~
 trimmomatic SE -phred33 -threads 2 sub06.fastq ../trimmed/sub06_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
 ~~~
-{: .bash}
+
 
 
 Of cource we don't want to do this for all the reads seperately so lets create a loop through all the fastq files.
@@ -525,7 +525,7 @@ do
  echo
 done
 ~~~
-{: .bash}
+
 
 This be be producing the following list
 
@@ -560,7 +560,7 @@ do
   echo trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/$outputFile ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3     SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
 done
 ~~~
-{: .bash}
+
 
 should be producing something like this
 
@@ -582,7 +582,7 @@ do
     trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/"$(basename "$fastq" .fastq)"_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
 done
 ~~~
-{: .bash}
+
 
 The following should appear:
 
