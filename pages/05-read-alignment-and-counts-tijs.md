@@ -106,9 +106,10 @@ $For filename in *.fq
 If the commands look good rerun but this time without the echo.
 
 ~~~
-$For filename in *.fq
+$For infile in *.fq
  do
-    hisat2  -p 2 —dta -x ../general/ath -U filename | samtools view -Sb -F 4 -o ../mapped/"$(basename "$infile" .fq)”.bam
+    outfile="$(basename "$infile" .fq)”.bam
+    hisat2  -p 2 —dta -x ../general/ath -U filename | samtools view -Sb -F 4 -o ../mapped/$outfile
  done
 ~~~
 
@@ -116,12 +117,12 @@ $For filename in *.fq
 When running the hisat2 | samtools view, you will see output something like this:
 
 ~~~
-output of hisat2
-
-
-
-
-
+899979 reads; of these:
+  899979 (100.00%) were unpaired; of these:
+    160982 (17.89%) aligned 0 times
+    581749 (64.64%) aligned exactly 1 time
+    157248 (17.47%) aligned >1 times
+82.11% overall alignment rate
 ~~~
 
 
