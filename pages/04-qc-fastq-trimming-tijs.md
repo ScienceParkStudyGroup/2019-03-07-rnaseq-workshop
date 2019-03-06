@@ -168,12 +168,12 @@ directory we just created `~/Desktop/fastqc_html`.
 You should see a status output like this:
 
 ~~~
-SRR2584863_1_fastqc.html                      100%  249KB 152.3KB/s   00:01    
-SRR2584863_2_fastqc.html                      100%  254KB 219.8KB/s   00:01    
-SRR2584866_1_fastqc.html                      100%  254KB 271.8KB/s   00:00    
-SRR2584866_2_fastqc.html                      100%  251KB 252.8KB/s   00:00    
-SRR2589044_1_fastqc.html                      100%  249KB 370.1KB/s   00:00    
-SRR2589044_2_fastqc.html                      100%  251KB 592.2KB/s   00:00  
+sub06_fastqc.html                      100%  249KB 152.3KB/s   00:01    
+sub06_fastqc.html                      100%  254KB 219.8KB/s   00:01    
+sub06_fastqc.html                      100%  254KB 271.8KB/s   00:00    
+sub06_fastqc.html                      100%  251KB 252.8KB/s   00:00    
+sub06_fastqc.html                      100%  249KB 370.1KB/s   00:00    
+sub06_fastqc.html                      100%  251KB 592.2KB/s   00:00  
 ~~~
 
 
@@ -189,12 +189,7 @@ Your computer will open each of the HTML files in your default web
 browser. Depending on your settings, this might be as six separate
 tabs in a single window or six separate browser windows.
 
-## Exercise
-Discuss your results with a neighbor.
-- Which sample(s) look the best in terms of per base sequence quality?
-- Which sample(s) look the worst?
-
-
+ 
 ## Decoding the other FastQC outputs
 We've now looked at quite a few "Per base sequence quality" FastQC graphs, but there are nine other graphs that we haven't talked about! Below we have provided a brief overview of interpretations for each of these plots. It's important to keep in mind
 
