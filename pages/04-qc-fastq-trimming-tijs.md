@@ -1,6 +1,7 @@
 # Quality control and trimming
 
-<img src="https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/fix-episodes-tijs/images/RNAseqWorkflow.png" height="400" >
+<img src="https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/RNAseqWorkflow.png" height="400" >
+
 
 
 ## Running FastQC  
