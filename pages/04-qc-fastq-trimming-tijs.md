@@ -284,17 +284,17 @@ When we run our `for` loop, you will see output that starts like this:
 Archive:  sub06_fastqc.zip
    creating: sub06_fastqc/
    creating: sub06_fastqc/Icons/
-   creating: sub06_2_fastqc/Images/
-  inflating: sub06_2_fastqc/Icons/fastqc_icon.png  
-  inflating: sub06_2_fastqc/Icons/warning.png  
-  inflating: sub06_2_fastqc/Icons/error.png  
-  inflating: sub06_2_fastqc/Icons/tick.png  
-  inflating: sub06_2_fastqc/summary.txt  
-  inflating: sub06_2_fastqc/Images/per_base_quality.png  
-  inflating: sub06_2_fastqc/Images/per_tile_quality.png  
-  inflating: sub06_2_fastqc/Images/per_sequence_quality.png  
-  inflating: sub06_2_fastqc/Images/per_base_sequence_content.png  
-  inflating: sub06_2_fastqc/Images/per_sequence_gc_content.png  
+   creating: sub06_fastqc/Images/
+  inflating: sub06_fastqc/Icons/fastqc_icon.png  
+  inflating: sub06_fastqc/Icons/warning.png  
+  inflating: sub06_fastqc/Icons/error.png  
+  inflating: sub06_fastqc/Icons/tick.png  
+  inflating: sub06_fastqc/summary.txt  
+  inflating: sub06_fastqc/Images/per_base_quality.png  
+  inflating: sub06_fastqc/Images/per_tile_quality.png  
+  inflating: sub06_fastqc/Images/per_sequence_quality.png  
+  inflating: sub06_fastqc/Images/per_base_sequence_content.png  
+  inflating: sub06_fastqc/Images/per_sequence_gc_content.png  
   inflating: sub06_fastqc/Images/per_base_n_content.png  
   inflating: sub06_fastqc/Images/sequence_length_distribution.png  
   inflating: sub06_fastqc/Images/duplication_levels.png  
@@ -314,12 +314,12 @@ are a lot of files here. The one we're going to focus on is the
 If you list the files in our directory now you will see:
 
 ~~~
-SRR2584863_1_fastqc       SRR2584866_1_fastqc       SRR2589044_1_fastqc
-SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-SRR2584863_2_fastqc       SRR2584866_2_fastqc       SRR2589044_2_fastqc
-SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
+sub06_fastqc       sub08_fastqc       sub22_fastqc
+sub06_fastqc.html  sub08_fastqc.html  sub22_fastqc.html
+sub06_fastqc.zip   sub08_fastqc.zip   sub22_fastqc.zip
+sub07_fastqc       sub21_fastqc       sub24_fastqc
+sub07_fastqc.html  sub21_fastqc.html  sub24_fastqc.html
+sub07_fastqc.zip   sub21_fastqc.zip   sub24_fastqc.zip
 ~~~
 
 
@@ -333,19 +333,19 @@ $ ls -F
 
 
 ~~~
-SRR2584863_1_fastqc/      SRR2584866_1_fastqc/      SRR2589044_1_fastqc/
-SRR2584863_1_fastqc.html  SRR2584866_1_fastqc.html  SRR2589044_1_fastqc.html
-SRR2584863_1_fastqc.zip   SRR2584866_1_fastqc.zip   SRR2589044_1_fastqc.zip
-SRR2584863_2_fastqc/      SRR2584866_2_fastqc/      SRR2589044_2_fastqc/
-SRR2584863_2_fastqc.html  SRR2584866_2_fastqc.html  SRR2589044_2_fastqc.html
-SRR2584863_2_fastqc.zip   SRR2584866_2_fastqc.zip   SRR2589044_2_fastqc.zip
+sub06_fastqc/      sub08_fastqc/      sub22_fastqc/
+sub06_fastqc.html  sub08_fastqc.html  sub22_fastqc.html
+sub06_fastqc.zip   sub08_fastqc.zip   sub22_fastqc.zip
+sub07_fastqc/      sub21_fastqc/      sub24_fastqc/
+sub07_fastqc.html  sub21_fastqc.html  sub24_fastqc.html
+sub07_fastqc.zip   sub21_fastqc.zip   sub24_fastqc.zip
 ~~~
 
 
 Let's see what files are present within one of these output directories.
 
 ~~~
-$ ls -F SRR2584863_1_fastqc/
+$ ls -F sub06_fastqc/
 ~~~
 
 
@@ -357,22 +357,22 @@ fastqc_data.txt  fastqc.fo  fastqc_report.html	Icons/	Images/  summary.txt
 Use `less` to preview the `summary.txt` file for this sample.
 
 ~~~
-$ less SRR2584863_1_fastqc/summary.txt
+$ less sub06_fastqc/summary.txt
 ~~~
 
 
 ~~~
-PASS    Basic Statistics        SRR2584863_1.fastq
-PASS    Per base sequence quality       SRR2584863_1.fastq
-PASS    Per tile sequence quality       SRR2584863_1.fastq
-PASS    Per sequence quality scores     SRR2584863_1.fastq
+PASS    Basic Statistics        sub06.fastq
+PASS    Per base sequence quality       sub06.fastq
+PASS    Per tile sequence quality       sub06.fastq
+PASS    Per sequence quality scores     sub06.fastq
 WARN    Per base sequence content       SRR2584863_1.fastq
-WARN    Per sequence GC content SRR2584863_1.fastq
-PASS    Per base N content      SRR2584863_1.fastq
-PASS    Sequence Length Distribution    SRR2584863_1.fastq
-PASS    Sequence Duplication Levels     SRR2584863_1.fastq
-PASS    Overrepresented sequences       SRR2584863_1.fastq
-WARN    Adapter Content SRR2584863_1.fastq
+WARN    Per sequence GC content sub06.fastq
+PASS    Per base N content      sub06.fastq
+PASS    Sequence Length Distribution    sub06.fastq
+PASS    Sequence Duplication Levels     sub06.fastq
+PASS    Overrepresented sequences       sub06.fastq
+WARN    Adapter Content sub06.fastq
 ~~~
 
 
