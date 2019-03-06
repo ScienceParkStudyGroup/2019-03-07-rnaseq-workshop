@@ -399,3 +399,9 @@ You can download all files (fastq sequencing files, genome sequence in fasta for
     </div>
   </div>
 </div> {% comment %} End of 'editor' section. {% endcomment %}
+
+<h3> Credits</h3>
+<p>
+This material was built with heavy inspiration from the <a href="https://datacarpentry.org/genomics-workshop/">Data Carpentry Genomics workshop</a> developped under the supervision of the <a href="https://carpentries.org/">Carpentries Foundation</a>.  
+We also borrowed material from a course developed by the <a href="https://hbctraining.github.io/Intro-to-rnaseq-hpc-O2/schedule/">Harvard Chan Bioinformatics Core</a>.
+</p>
