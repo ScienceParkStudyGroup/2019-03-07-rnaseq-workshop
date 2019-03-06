@@ -21,7 +21,7 @@ tools in a specified order is commonly referred to as a *workflow* or a *pipelin
 
 An example of a typical mRNA-Seq workflow is provided below:
 
-<img src="https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/fix-episodes-tijs/images/RNAseqWorkflow.png" height="400" >
+<img src="https://github.com/ScienceParkStudyGroup/2019-03-07-rnaseq-workshop/blob/gh-pages/images/RNAseqWorkflow.png" height="400" >
 
 1. Quality control - Assessing quality using FastQC
 2. Quality control - Trimming and/or filtering reads (if necessary)
