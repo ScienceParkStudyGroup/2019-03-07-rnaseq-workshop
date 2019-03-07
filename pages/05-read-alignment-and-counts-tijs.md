@@ -23,7 +23,7 @@ Our first step is to index the reference genome for use by hisat2. Indexing allo
 ~~~
 $ cd ~/RNAseq070319/general
 
-$ hisat2-build -p 5 ath.fas ath --quiet
+$ hisat2-build -p 2 ath.fas ath
 
 ~~~
 
@@ -95,10 +95,10 @@ It's good again to first start with a 'dry' run with the use of echo
 ~~~
 $ cd ~/RNAseq070319/trimmed/
 
-$For filename in *.fq
+$for infile in *.fq
  do
    outfile="$(basename "$infile" .fq)”.bam
-   echo hisat2 -p 2 —dta -x ../general/ath -U filename | samtools view -Sb -F 4 -o ../mapped/$outfile
+   echo hisat2 -p 2 —dta -x ../general/ath -U infile | samtools view -Sb -F 4 -o ../mapped/$outfile
  done
 ~~~
 
@@ -106,7 +106,7 @@ $For filename in *.fq
 If the commands look good rerun but this time without the echo.
 
 ~~~
-$For infile in *.fq
+$for infile in *.fq
  do
     outfile="$(basename "$infile" .fq)”.bam
     hisat2  -p 2 —dta -x ../general/ath -U filename | samtools view -Sb -F 4 -o ../mapped/$outfile
