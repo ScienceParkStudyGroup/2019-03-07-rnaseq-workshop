@@ -83,7 +83,7 @@ Running hisat2 to align ( or map ) the reads and pipe the result through samtool
 ~~~
 $ cd ~/RNAseq070319/trimmed/
 
-$  hisat2  -p 2 -x ../general/ath -U sub06qc.fq | samtools view -Sb -F 4 -o ../mapped/sub06_qc.bam
+$  hisat2  -p 2 -x ../general/ath -U sub06_qc.fq | samtools view -Sb -F 4 -o ../mapped/sub06_qc.bam
 ~~~
 
 
