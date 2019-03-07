@@ -362,7 +362,7 @@ PASS    Basic Statistics        sub06.fastq
 PASS    Per base sequence quality       sub06.fastq
 PASS    Per tile sequence quality       sub06.fastq
 PASS    Per sequence quality scores     sub06.fastq
-WARN    Per base sequence content       SRR2584863_1.fastq
+WARN    Per base sequence content       sub06.fastq
 WARN    Per sequence GC content sub06.fastq
 PASS    Per base N content      sub06.fastq
 PASS    Sequence Length Distribution    sub06.fastq
@@ -435,10 +435,10 @@ this can be done with the help of 'basename'
 
 
 ~~~
-$ for fastq in *.fastq
+$ for infile in *.fastq
 do
  echo inputfile $fastq
- base="$(basename $fastq .fastq)"_qc.fq
+ base="$(basename $infile .fastq)"_qc.fq
  echo outputfile $base
  echo
 done
