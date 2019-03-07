@@ -437,9 +437,9 @@ this can be done with the help of 'basename'
 ~~~
 $ for infile in *.fastq
 do
- echo inputfile $fastq
- base="$(basename $infile .fastq)"_qc.fq
- echo outputfile $base
+ echo inputfile $infile
+ outfile="$(basename $infile .fastq)"_qc.fq
+ echo outputfile $outfile
  echo
 done
 ~~~
