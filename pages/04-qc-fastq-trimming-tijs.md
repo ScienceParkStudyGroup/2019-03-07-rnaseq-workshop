@@ -495,9 +495,10 @@ trimmomatic SE -phred33 -threads 2 sub24.fastq ../trimmed/sub24_qc.fq ILLUMINACL
 If it al seems ok rerun with out 'echo'
 
 ~~~
-$ for fastq in *.fastq
+$ for infile in *.fastq
 do
-    trimmomatic SE -phred33 -threads 2 $fastq ../trimmed/"$(basename "$fastq" .fastq)"_qc.fq ILLUMINACLIP:../adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
+    outfile="$(basename $infile .fastq)"_qc.fq
+    trimmomatic SE -phred33 -threads 2 $infile ../trimmed/"$outfile ILLUMINACLIP:../general/adapters.fasta:2:30:10 LEADING:3 TRAILING:3 SLIDINGWINDOW:4:15 MINLEN:25 CROP:100
 done
 ~~~
 
