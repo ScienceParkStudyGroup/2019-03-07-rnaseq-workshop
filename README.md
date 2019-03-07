@@ -1,25 +1,12 @@
-[![Create a Slack Account with us](https://img.shields.io/badge/Create_Slack_Account-The_Carpentries-071159.svg)](https://swc-slack-invite.herokuapp.com/) 
- [![Slack Status](https://img.shields.io/badge/Slack_Channel-swc--py--gapminder-E01563.svg)](https://swcarpentry.slack.com/messages/C9X4W03KL) 
-
-python-novice-gapminder
+RNA-Seq workshop
 =======================
 
-Introduction to Python for non-programmers with a focus on plotting and data analysis.
-Please see <https://swcarpentry.github.io/python-novice-gapminder/>
-for a rendered version of this material,
-[the lesson template documentation][lesson-example]
-for instructions on formatting, building, and submitting material,
-or run `make` in this directory for a list of helpful commands.
+An afternoon dedicated to mRNA-Seq. Provides a one-hour introduction on RNA-Seq and three hours of practical hands-on experience.  
 
 Maintainer(s):
 
-* [Allen Lee][lee-allen]
-* [Nathan Moore][moore-nathan]
-* [Sourav Singh][singh-sourav]
-* [Olav Vahtras][olav-vahtras]
+* [Tijs Bliek][tijs-bliek]
+* [Marc Galland][marc-galland]
 
-[lee-allen]: https://software-carpentry.org/team/#lee-allen
-[lesson-example]: https://carpentries.github.io/lesson-example/
-[moore-nathan]: https://software-carpentry.org/team/#moore_nathan
-[singh-sourav]: https://software-carpentry.org/team/#singh-sourav
-[olav-vahtras]: https://software-carpentry.org/team/#vahtras_olav
+[tijs-bliek]: http://www.uva.nl/profiel/b/l/m.bliek/m.bliek.html
+[marc-galland]: http://www.mgalland.info/
