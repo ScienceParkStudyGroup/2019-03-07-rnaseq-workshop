@@ -46,13 +46,13 @@ From these samples, mRNA were sequenced using the Proton Ion system ([RNA Biolog
 
 To download the data, run the commands below. It will take about 5 minutes to download the files.
 ~~~
-$ wget https://zenodo.org/record/2585791/files/RNAseq070319.tar.gz?download=1 
+$ wget https://zenodo.org/record/2585791/files/RNAseq070319.tar.gz 
 ~~~
 
 The data comes in a compressed format, which is why there is a `.gz` at the end of the file names. This makes it faster to transfer, and allows it to take up less space on our computer. Let's unzip one of the files so that we can look at all the files.
 
 ~~~
-$ tar -zxvf RNAseq.tar.gz
+$ tar -zxvf RNAseq070319.tar.gz
 ~~~
 
 
