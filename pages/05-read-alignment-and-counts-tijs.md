@@ -98,7 +98,7 @@ $ cd ~/RNAseq070319/trimmed/
 $for infile in *.fq
  do
    outfile="$(basename "$infile" .fq)”.bam
-   echo hisat2 -p 2 —dta -x ../general/ath -U infile | samtools view -Sb -F 4 -o ../mapped/$outfile
+   echo "hisat2 -p 2 —dta -x ../general/ath -U infile | samtools view -Sb -F 4 -o ../mapped/$outfile"
  done
 ~~~
 
