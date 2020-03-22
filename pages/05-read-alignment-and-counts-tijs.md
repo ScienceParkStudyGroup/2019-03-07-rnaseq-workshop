@@ -83,7 +83,7 @@ Running hisat2 to align ( or map ) the reads and pipe the result through samtool
 ~~~
 $ cd ~/RNAseq070319/trimmed/
 
-$  hisat2  -p 2 -x ../general/ath -U sub06_qc.fq | samtools view -Sb -F 4 -o ../mapped/sub06_qc.bam
+$  hisat2  -p 2 --dta -x ../general/ath -U sub06_qc.fq | samtools view -Sb -F 4 -o ../mapped/sub06_qc.bam
 ~~~
 
 
@@ -97,8 +97,8 @@ $ cd ~/RNAseq070319/trimmed/
 
 $for infile in *.fq
  do
-   outfile="$(basename "$infile" .fq)”.bam
-   echo "hisat2 -p 2 —dta -x ../general/ath -U infile | samtools view -Sb -F 4 -o ../mapped/$outfile"
+   outfile="$(basename $infile .fq)”.bam
+   echo "hisat2 -p 2 --dta -x ../general/ath -U $infile | samtools view -Sb -F 4 -o ../mapped/$outfile"
  done
 ~~~
 
@@ -108,8 +108,8 @@ If the commands look good rerun but this time without the echo.
 ~~~
 $for infile in *.fq
  do
-    outfile="$(basename "$infile" .fq)”.bam
-    hisat2  -p 2 —dta -x ../general/ath -U filename | samtools view -Sb -F 4 -o ../mapped/$outfile
+    outfile="$(basename $infile .fq)”.bam
+    hisat2 -p 2 --dta -x ../general/ath -U $infile | samtools view -Sb -F 4 -o ../mapped/$outfile
  done
 ~~~
 
