@@ -23,7 +23,9 @@ Our first step is to index the reference genome for use by hisat2. Indexing allo
 ~~~
 $ cd ~/RNAseq070319/general
 
-$ hisat2-build -p 2 ath.fas ath
+$ mkdir genomeIndex
+
+$ STAR --runMode genomeGenerate --genomeDir genomeIndex --genomeFastaFiles AtChromosome1.fa --runThreadN 8
 
 ~~~
 
@@ -49,10 +51,10 @@ Total time for call to driver() for forward index: 00:01:09
 
 
 
-The indexing should have produced 8 hisat2 index files (.ht2). Use the following command to see if they're really there.
+The indexing should have produced 8 star index files. Use the following command to see if they're really there.
 
 ~~~
-$ ls *.ht2
+$ ls genomeIndex/
 ~~~
 
 
