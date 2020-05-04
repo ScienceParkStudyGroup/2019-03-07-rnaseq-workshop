@@ -94,20 +94,20 @@ use have a look at the
 [STAR manual.](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf).
 
 
-Here are some ecsamples of comman used arguments.
+Here are some examples of comman used arguments.
 
 | argument   | meaning |
 | ------- | ---------- |
 | `--runThreads` | number of threads |
 | `--genomeDir` | /path/to/genomeDir |
 | `--readFilesIn` | /path/to/read1 [/path/to/read2] |
-| `--outSAMtype`  | BAM/SAM or None  [optional: SortedByCoordinate]  |
-|  `--outReadsUnmapped` | [default: None] Fastx ; output in separate fasta/fastq file |
-| `--outFilterMultimapNmax`  | [default: 10] max number of alignments accepted |
-|  `--outFilterMismatchNmax` | Cut the specified number of bases from the start of the read. |
-| `--outFilterMismatchNoverLmax`  | Drop an entire read if it is below a specified length. |
-|  `--outFilterMismatchNoverReadLmax` | Convert quality scores to Phred-33.  |
-|  `--alignEndsType` | EndToEnd force end-to-end alignment, don't soft-clip |
+| `--outSAMtype` | BAM/SAM or None  [optional: SortedByCoordinate]  |
+| `--outReadsUnmapped` | [default: None] Fastx ; output in separate fasta/fastq file |
+| `--outFilterMultimapNmax` | [default: 10] max number of alignments accepted |
+| `--outFilterMismatchNmax` | [default: 10] max number of mismatches accepted |
+| `--outFilterMismatchNoverLmax`  | [default: 0.3] max fraction of mismatches mapped length |
+| `--outFilterMismatchNoverReadLmax` | [default: 1.0] max fraction of mismatches read length |
+| `--alignEndsType` | EndToEnd force end-to-end alignment, don't soft-clip |
 
 
 
