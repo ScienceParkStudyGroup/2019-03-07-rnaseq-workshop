@@ -20,6 +20,8 @@ The alignment process consists of two steps:
 ### Index the reference genome
 Our first step is to index the reference genome for use by STAR. Indexing allows the aligner to quickly find potential alignment sites for query sequences in a genome, which saves time during alignment. Indexing the reference only has to be run once. The only reason you would want to create a new index is if you are working with a different reference genome or you are using a different tool for alignment (index files are not exchangeable between tools).
 
+Take note that depending on the genome size these index files produced by STAR can be pretty big. Make sure there's enough disk space available.
+
 ~~~
 $ cd ~/RNAseq070319/general
 
@@ -48,7 +50,7 @@ Apr 29 16:57:00 ..... Finished successfully
 
 
 
-The indexing should have produced 8 star index files. Use the following command to see if they're really there. Take note that depending on the genome size these files can be pretty big. Be sure to have enough disk space.
+The indexing should have produced 8 star index files. Use the following command to see if they're really there. 
 
 ~~~
 $ ls -l genomeIndex/
@@ -116,7 +118,7 @@ Here are some examples of comman used arguments.
 For now we will be using STAR with the following arguments
 ~~~
 
-$  STAR --genomeDir genomeindex --runThreadN 2 --readFilesIn {i} --readFilesCommand zcat --outFileNamePrefix --outSAMtype BAM SortedByCoordinate --outSAMunmapped None --outFilterMismatchNmax 3 --outFilterMultimapNmax 1
+$  STAR --genomeDir genomeindex --runThreadN 2 --readFilesIn ERR1406259.fq.gz --readFilesCommand zcat --outFileNamePrefix ERR1406259 --outSAMtype BAM SortedByCoordinate --outSAMunmapped None --outFilterMismatchNmax 3 --outFilterMultimapNmax 1
 
 ~~~
 
@@ -150,13 +152,56 @@ $for infile in *.fq
 When running the STAR command, you will see output something like this:
 
 ~~~
-899979 reads; of these:
-  899979 (100.00%) were unpaired; of these:
-    160982 (17.89%) aligned 0 times
-    581749 (64.64%) aligned exactly 1 time
-    157248 (17.47%) aligned >1 times
-82.11% overall alignment rate
+May 04 12:51:55 ..... Started STAR run
+May 04 12:52:47 ..... Started mapping
+May 04 12:55:06 ..... Started sorting BAM
+May 04 12:55:59 ..... Finished successfully
 ~~~
+
+
+The final.put file contains all the characteristics of the alignment.
+
+~~~
+$ less ERR1406259Log.final.out
+~~~
+
+resulting in table containing all the alignment numbers.
+
+~~~
+                                 Started job on |       May 04 12:51:55
+                             Started mapping on |       May 04 12:52:47
+                                    Finished on |       May 04 12:55:59
+       Mapping speed, Million of reads per hour |       156.56
+
+                          Number of input reads |       8349970
+                      Average input read length |       101
+                                    UNIQUE READS:
+                   Uniquely mapped reads number |       8047613
+                        Uniquely mapped reads % |       96.38%
+                          Average mapped length |       100.60
+                       Number of splices: Total |       2243517
+            Number of splices: Annotated (sjdb) |       0
+                       Number of splices: GT/AG |       2223720
+                       Number of splices: GC/AG |       16101
+                       Number of splices: AT/AC |       479
+               Number of splices: Non-canonical |       3217
+                      Mismatch rate per base, % |       0.24%
+                         Deletion rate per base |       0.00%
+                        Deletion average length |       1.30
+                        Insertion rate per base |       0.01%
+                       Insertion average length |       1.11
+                             MULTI-MAPPING READS:
+        Number of reads mapped to multiple loci |       300104
+             % of reads mapped to multiple loci |       3.59%
+        Number of reads mapped to too many loci |       385
+             % of reads mapped to too many loci |       0.00%
+                                  UNMAPPED READS:
+       % of reads unmapped: too many mismatches |       0.00%
+                 % of reads unmapped: too short |       0.02%
+                     % of reads unmapped: other |       0.00%
+ERR1406259Log.final.out (END) 
+~~~
+
 
 
 
