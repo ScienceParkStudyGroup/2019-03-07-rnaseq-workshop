@@ -18,7 +18,7 @@ The alignment process consists of two steps:
 
 
 ### Index the reference genome
-Our first step is to index the reference genome for use by hisat2. Indexing allows the aligner to quickly find potential alignment sites for query sequences in a genome, which saves time during alignment. Indexing the reference only has to be run once. The only reason you would want to create a new index is if you are working with a different reference genome or you are using a different tool for alignment.
+Our first step is to index the reference genome for use by STAR. Indexing allows the aligner to quickly find potential alignment sites for query sequences in a genome, which saves time during alignment. Indexing the reference only has to be run once. The only reason you would want to create a new index is if you are working with a different reference genome or you are using a different tool for alignment (index files are not exchangeable between tools).
 
 ~~~
 $ cd ~/RNAseq070319/general
@@ -73,7 +73,9 @@ result should be:
 
 ### Align reads to reference genome
 
-creating the aligtnment (bam-files) is done in two steps. first the aligning it self with the use of hisat2. After that the alignment file will be filtered to only contain the reads that actualy map to the genome.This is done with [sam flags](https://broadinstitute.github.io/picard/explain-flags.html) in samtools view (with the '-F 4' all the unmapped reads will be removed).   
+In some tools like hisat2 creating the aligtnment (bam-files) is done in two steps. first the aligning it self. After that the alignment file will be filtered for instance to only contain the reads that actualy map to the genome. This is done with [sam flags](https://broadinstitute.github.io/picard/explain-flags.html) in samtools view (with the '-F 4' all the unmapped reads will be removed). STAR on the other hand has a build in filter and also a sort function. So the output is ready to use for downstream tools.  
+
+
 
 First of course we will need to create a directory to output the alignment files
 
@@ -84,13 +86,17 @@ $ mkdir mapped
 ~~~
 
 
-
 Running STAR to align ( or map ) the reads and optionaly filter and sort them.
 
 In contrast to most apps or programms, STAR does not have a help function.
 running STAR -h or STAR --help will result in a n error. For information on what arguments to use you can or need to 
 use have a look at the 
 [STAR manual.](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf).
+
+
+Here are some ecsamples of comman used arguments.
+
+
 
 ~~~
 $ cd ~/RNAseq070319/trimmed/
