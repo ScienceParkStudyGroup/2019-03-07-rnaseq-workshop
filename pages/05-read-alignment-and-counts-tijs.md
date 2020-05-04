@@ -4,8 +4,8 @@
 <img src="../images/RNAseqWorkflow.png" height="400" >
 
 We perform read alignment or mapping to determine where in the genome our reads originated from. There are a number of tools to
-choose from and, while there is no gold standard, there are some tools that are better suited for particular NGS analyses. We will be
-using the [hisat2](http://ccb.jhu.edu/software/hisat2/index.shtml).
+choose from and, while there is no gold standard, there are some tools that are better suited for particular NGS analyses. In this tutorial we will be using [STAR](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf) but also 
+a tool like [hisat2](http://ccb.jhu.edu/software/hisat2/index.shtml) does the job.
 
 The alignment process consists of two steps:
 
@@ -48,7 +48,7 @@ Apr 29 16:57:00 ..... Finished successfully
 
 
 
-The indexing should have produced 8 star index files. Use the following command to see if they're really there.
+The indexing should have produced 8 star index files. Use the following command to see if they're really there. Take note that depending on the genome size these files can be pretty big. Be sure to have enough disk space.
 
 ~~~
 $ ls -l genomeIndex/
@@ -88,9 +88,9 @@ $ mkdir mapped
 Running STAR to align ( or map ) the reads and optionaly filter and sort them.
 
 In contrast to most apps or programms, STAR does not have a help function.
-running STAR -h or STAR --help will result in a n error. For information on what arguments to use you need to 
-have a look at the manual.
-[STAR](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf).
+running STAR -h or STAR --help will result in a n error. For information on what arguments to use you can or need to 
+use have a look at the 
+[STAR manual.](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf).
 
 ~~~
 $ cd ~/RNAseq070319/trimmed/
