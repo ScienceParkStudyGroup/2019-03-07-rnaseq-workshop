@@ -101,13 +101,13 @@ Here are some ecsamples of comman used arguments.
 | `--runThreads` | number of threads |
 | `--genomeDir` | /path/to/genomeDir |
 | `--readFilesIn` | /path/to/read1 [/path/to/read2] |
-| `LEADING`  | Cut bases off the start of a read, if below a threshold quality.  |
-|  `TRAILING` |  Cut bases off the end of a read, if below a threshold quality. |
-| `CROP`  |  Cut the read to a specified length. |
-|  `HEADCROP` |  Cut the specified number of bases from the start of the read. |
-| `MINLEN`  |  Drop an entire read if it is below a specified length. |
-|  `TOPHRED33` | Convert quality scores to Phred-33.  |
-|  `TOPHRED64` |  Convert quality scores to Phred-64. |
+| `--outSAMtype`  | BAM/SAM or None  [optional: SortedByCoordinate]  |
+|  `--outReadsUnmapped` | [default: None] Fastx ; output in separate fasta/fastq file |
+| `--outFilterMultimapNmax`  | [default: 10] max number of alignments accepted |
+|  `--outFilterMismatchNmax` | Cut the specified number of bases from the start of the read. |
+| `--outFilterMismatchNoverLmax`  | Drop an entire read if it is below a specified length. |
+|  `--outFilterMismatchNoverReadLmax` | Convert quality scores to Phred-33.  |
+|  `--alignEndsType` | EndToEnd force end-to-end alignment, don't soft-clip |
 
 
 
