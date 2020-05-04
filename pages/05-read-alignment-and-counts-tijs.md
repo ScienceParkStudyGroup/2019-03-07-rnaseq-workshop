@@ -113,10 +113,10 @@ Here are some examples of comman used arguments.
 
 
 
+For now we will be using STAR with the following arguments
 ~~~
-$ cd ~/RNAseq070319/trimmed/
 
-$  STAR --genomeDir genomeindex --runThreadN 2 --readFilesIn {i} --readFilesCommand zcat --outFileNamePrefix --outSAMtype BAM SortedByCoordinate --outSAMunmapped None --outFilterMismatchNmax 3 --alignEndsType EndToEnd --outFilterMultimapNmax 1
+$  STAR --genomeDir genomeindex --runThreadN 2 --readFilesIn {i} --readFilesCommand zcat --outFileNamePrefix --outSAMtype BAM SortedByCoordinate --outSAMunmapped None --outFilterMismatchNmax 3 --outFilterMultimapNmax 1
 
 ~~~
 
@@ -127,9 +127,8 @@ Next we want to make a loop to do all the files
 It's good again to first start with a 'dry' run with the use of echo
 
 ~~~
-$ cd ~/RNAseq070319/trimmed/
 
-$for infile in trimmed/*.fq
+$ for infile in trimmed/*.fq
  do
    outfile="$(basename $infile .fq)”
    echo "STAR --genomeDir genomeIndex --runThreadN 2 --readFilesIn trimmed/$infile --readFilesCommand zcat --outFileNamePrefix mapped/$outfile --outSAMtype BAM SortedByCoordinate --outSAMunmapped None --outFilterMismatchNmax 3 --alignEndsType EndToEnd --outFilterMultimapNmax 1"
@@ -137,7 +136,7 @@ $for infile in trimmed/*.fq
 ~~~
 
 
-If the commands look good rerun but this time without the echo.
+If the commands look good, rerun but this time without the echo.
 
 ~~~
 $for infile in *.fq
@@ -148,7 +147,7 @@ $for infile in *.fq
 ~~~
 
 
-When running the hisat2 | samtools view, you will see output something like this:
+When running the STAR command, you will see output something like this:
 
 ~~~
 899979 reads; of these:
@@ -196,47 +195,4 @@ $ featureCounts -O -t mRNA -g ID -a ../general/annotation.all_transcripts.exon_f
 
 The file produced by featureCounts is a tab-delimited file.
 
-For the ideal shiny that we will be using for the downstream analysis we need to make some adjustments.
 
-the first line of the file containing the command used to run featureCounts, needs to be removed.(sill in the mapped directory)
-
-~~~
-$ awk '{if (NR!=1){print}} counts.txt > countsNew.txt
-~~~
-
-
-
-last we need to remove some columns that contain info on the gene (chromosome, startingposition, finalposition, length)
-
-~~~
-$ cut -f2,3,4,5,6 --complement countsNew.txt > countsFinal.txt
-~~~
-
-
-
-Now you should have a counts file (tab-delimited)
-
-~~~
-$ head countsNew.txt
-~~~
-
-
-
-
-| Geneid  sub06_qc.bam    sub07_qc.bam    sub08_qc.bam    sub21_qc.bam    sub23_qc.bam    sub24_qc.bam |
-|------------------------------------------------------------------------------------------------------|
-| AT1G01010       0       0       6       6       3       10                                           |
-| AT1G01020       2       4       3       1       2       1                                            |
-| AT1G03987       0       0       0       0       0       0                                            |
-| AT1G01030       0       0       0       0       2       1                                            |
-| AT1G03993       0       0       0       0       0       0                                            |
-| AT1G01040       17      17      22      3       3       4                                            |
-| AT1G01046       0       0       0       0       0       0                                            |
-| ath-miR838      0       0       0       0       0       0                                            |
-| AT1G01050       16      23      15      21      22      30                                           |
-| AT1G03997       0       0       0       0       0       0                                            |
-| AT1G01060       0       0       1       0       0       2                                            |
-| AT1G01070       0       1       2       1       2       4                                            |
-| AT1G04003       0       0       0       0       0       0                                            |
-| AT1G01080       51      28      26      25      25      21                                           |
-| AT1G01090       108     90      103     30      46      32                                           |
