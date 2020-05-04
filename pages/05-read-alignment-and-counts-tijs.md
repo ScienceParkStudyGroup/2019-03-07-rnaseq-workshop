@@ -102,7 +102,8 @@ Here are some examples of comman used arguments.
 | `--genomeDir` | /path/to/genomeDir |
 | `--readFilesIn` | /path/to/read1 [/path/to/read2] |
 | `--readFilesCommand zcat` | when make use of gzipped fastq files |
-| `--outSAMtype` | BAM/SAM or None  [optional: SortedByCoordinate]  |
+| `--outFileNamePrefix` | /path/to/output file name |
+| `--outSAMtype` | BAM/SAM or None  [optional: SortedByCoordinate] |
 | `--outReadsUnmapped` | [default: None] Fastx ; output in separate fasta/fastq file |
 | `--outFilterMultimapNmax` | [default: 10] max number of alignments accepted |
 | `--outFilterMismatchNmax` | [default: 10] max number of mismatches accepted |
@@ -115,7 +116,8 @@ Here are some examples of comman used arguments.
 ~~~
 $ cd ~/RNAseq070319/trimmed/
 
-$  hisat2  -p 2 --dta -x ../general/ath -U sub06_qc.fq | samtools view -Sb -F 4 -o ../mapped/sub06_qc.bam
+$  STAR --genomeDir genomeindex --runThreadN 2 --readFilesIn {i} --readFilesCommand zcat --outFileNamePrefix --outSAMtype BAM SortedByCoordinate --outSAMunmapped None --outFilterMismatchNmax 3 --alignEndsType EndToEnd --outFilterMultimapNmax 1
+
 ~~~
 
 
@@ -127,10 +129,10 @@ It's good again to first start with a 'dry' run with the use of echo
 ~~~
 $ cd ~/RNAseq070319/trimmed/
 
-$for infile in *.fq
+$for infile in trimmed/*.fq
  do
-   outfile="$(basename $infile .fq)”.bam
-   echo "hisat2 -p 2 --dta -x ../general/ath -U $infile | samtools view -Sb -F 4 -o ../mapped/$outfile"
+   outfile="$(basename $infile .fq)”
+   echo "STAR --genomeDir genomeIndex --runThreadN 2 --readFilesIn trimmed/$infile --readFilesCommand zcat --outFileNamePrefix mapped/$outfile --outSAMtype BAM SortedByCoordinate --outSAMunmapped None --outFilterMismatchNmax 3 --alignEndsType EndToEnd --outFilterMultimapNmax 1"
  done
 ~~~
 
@@ -140,8 +142,8 @@ If the commands look good rerun but this time without the echo.
 ~~~
 $for infile in *.fq
  do
-    outfile="$(basename $infile .fq)”.bam
-    hisat2 -p 2 --dta -x ../general/ath -U $infile | samtools view -Sb -F 4 -o ../mapped/$outfile
+   outfile="$(basename $infile .fq)”
+   STAR --genomeDir genomeIndex --runThreadN 2 --readFilesIn trimmed/$infile --readFilesCommand zcat --outFileNamePrefix mapped/$outfile --outSAMtype BAM SortedByCoordinate --outSAMunmapped None --outFilterMismatchNmax 3 --alignEndsType EndToEnd --outFilterMultimapNmax 1
  done
 ~~~
 
