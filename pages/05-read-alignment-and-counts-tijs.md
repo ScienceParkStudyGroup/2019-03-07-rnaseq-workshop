@@ -90,13 +90,13 @@ $ mkdir mapped
 
 Running STAR to align ( or map ) the reads and optionaly filter and sort them.
 
-In contrast to most apps or programms, STAR does not have a help function.
-running STAR -h or STAR --help will result in a n error. For information on what arguments to use you can or need to 
+In contrast to most atools, STAR does not have a help function.
+running STAR -h or STAR --help will result in an error. For information on what arguments to use you can or need to 
 use have a look at the 
 [STAR manual.](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf).
 
 
-Here are some examples of comman used arguments.
+Here are some examples of common used arguments.
 
 | argument   | meaning |
 | ------- | ---------- |
