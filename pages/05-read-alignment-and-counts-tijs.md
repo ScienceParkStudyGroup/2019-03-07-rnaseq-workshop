@@ -33,19 +33,16 @@ $ STAR --runMode genomeGenerate --genomeDir genomeIndex --genomeFastaFiles AtChr
 While the index is created, you will see output something like this:
 
 ~~~
-Settings:
-  Output files: "ath.*.ht2"
-  Line rate: 6 (line is 64 bytes)
-  Lines per side: 1 (side is 64 bytes)
-  Offset rate: 4 (one in 16)
-  FTable chars: 10
- …
-  numLines: 622300
-  gbwtTotLen: 39827200
-  gbwtTotSz: 39827200
-  reverse: 0
-  linearFM: Yes
-Total time for call to driver() for forward index: 00:01:09
+Apr 29 16:55:14 ..... Started STAR run
+Apr 29 16:55:14 ... Starting to generate Genome files
+Apr 29 16:55:16 ... starting to sort  Suffix Array. This may take a long time...
+Apr 29 16:55:16 ... sorting Suffix Array chunks and saving them to disk...
+Apr 29 16:56:13 ... loading chunks from disk, packing SA...
+Apr 29 16:56:26 ... writing Suffix Array to disk ...
+Apr 29 16:56:27 ... Finished generating suffix array
+Apr 29 16:56:27 ... starting to generate Suffix Array index...
+Apr 29 16:56:48 ... writing SAindex to disk
+Apr 29 16:57:00 ..... Finished successfully
 
 ~~~
 
@@ -54,13 +51,21 @@ Total time for call to driver() for forward index: 00:01:09
 The indexing should have produced 8 star index files. Use the following command to see if they're really there.
 
 ~~~
-$ ls genomeIndex/
+$ ls -l genomeIndex/
 ~~~
 
 
 result should be:
 ~~~
-ath.1.ht2  ath.2.ht2  ath.3.ht2  ath.4.ht2  ath.5.ht2  ath.6.ht2  ath.7.ht2  ath.8.ht2
+-rw-r--r-- 1 tbliek genseq-local          9 Apr 29 16:55 chrLength.txt
+-rw-r--r-- 1 tbliek genseq-local         14 Apr 29 16:55 chrNameLength.txt
+-rw-r--r-- 1 tbliek genseq-local          5 Apr 29 16:55 chrName.txt
+-rw-r--r-- 1 tbliek genseq-local         11 Apr 29 16:55 chrStart.txt
+-rw-r--r-- 1 tbliek genseq-local   30670848 Apr 29 16:55 Genome
+-rw-r--r-- 1 tbliek genseq-local        290 Apr 29 16:55 genomeParameters.txt
+-rw-r--r-- 1 tbliek genseq-local  249672325 Apr 29 16:56 SA
+-rw-r--r-- 1 tbliek genseq-local 1565873616 Apr 29 16:56 SAindex
+
 ~~~
 
 
@@ -80,7 +85,12 @@ $ mkdir mapped
 
 
 
-Running hisat2 to align ( or map ) the reads and pipe the result through samtools view to remove the non-mapping reads.
+Running STAR to align ( or map ) the reads and optionaly filter and sort them.
+
+In contrast to most apps or programms, STAR does not have a help function.
+running STAR -h or STAR --help will result in a n error. For information on what arguments to use you need to 
+have a look at the manual.
+[STAR](https://physiology.med.cornell.edu/faculty/skrabanek/lab/angsd/lecture_notes/STARmanual.pdf).
 
 ~~~
 $ cd ~/RNAseq070319/trimmed/
