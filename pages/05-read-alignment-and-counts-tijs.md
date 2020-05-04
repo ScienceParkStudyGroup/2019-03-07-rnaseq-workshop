@@ -73,7 +73,7 @@ result should be:
 
 ### Align reads to reference genome
 
-In some tools like hisat2 creating the aligtnment (bam-files) is done in two steps. first the aligning it self. After that the alignment file will be filtered for instance to only contain the reads that actualy map to the genome. This is done with [sam flags](https://broadinstitute.github.io/picard/explain-flags.html) in samtools view (with the '-F 4' all the unmapped reads will be removed). STAR on the other hand has a build in filter and also a sort function. So the output is ready to use for downstream tools.  
+In some tools like hisat2 creating the sequence alignment files (bam-files) is done in two steps. first the aligning it self. After that the alignment file will be filtered for instance to only contain the reads that actualy map to the genome. This is done with [sam flags](https://broadinstitute.github.io/picard/explain-flags.html) in samtools view (with the '-F 4' all the unmapped reads will be removed). STAR on the other hand has a build in filter and also a sort function. So the output is ready to use for downstream tools.  
 
 
 
@@ -95,6 +95,19 @@ use have a look at the
 
 
 Here are some ecsamples of comman used arguments.
+
+| argument   | meaning |
+| ------- | ---------- |
+| `--runThreads` | number of threads |
+| `--genomeDir` | /path/to/genomeDir |
+| `--readFilesIn` | /path/to/read1 [/path/to/read2] |
+| `LEADING`  | Cut bases off the start of a read, if below a threshold quality.  |
+|  `TRAILING` |  Cut bases off the end of a read, if below a threshold quality. |
+| `CROP`  |  Cut the read to a specified length. |
+|  `HEADCROP` |  Cut the specified number of bases from the start of the read. |
+| `MINLEN`  |  Drop an entire read if it is below a specified length. |
+|  `TOPHRED33` | Convert quality scores to Phred-33.  |
+|  `TOPHRED64` |  Convert quality scores to Phred-64. |
 
 
 
