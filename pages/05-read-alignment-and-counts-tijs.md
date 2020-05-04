@@ -101,6 +101,7 @@ Here are some examples of comman used arguments.
 | `--runThreads` | number of threads |
 | `--genomeDir` | /path/to/genomeDir |
 | `--readFilesIn` | /path/to/read1 [/path/to/read2] |
+| `--readFilesCommand zcat` | when make use of gzipped fastq files |
 | `--outSAMtype` | BAM/SAM or None  [optional: SortedByCoordinate]  |
 | `--outReadsUnmapped` | [default: None] Fastx ; output in separate fasta/fastq file |
 | `--outFilterMultimapNmax` | [default: 10] max number of alignments accepted |
